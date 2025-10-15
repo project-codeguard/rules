@@ -127,8 +127,18 @@ Maintainers aim to review pull requests and issues within 3 business days.
 Write commit messages that clearly explain the change by continuing the sentence “This commit …”.
 
 Examples of good commit messages:
-- “This commit renames the examples folder to reference-implementations.”
-- “This commit bumps dependency versions to address security advisories.”
+- "This commit renames the examples folder to reference-implementations."
+- "This commit bumps dependency versions to address security advisories."
+
+## Release Process
+
+For maintainers creating a new release:
+
+1. Bump `[project].version` in `pyproject.toml` to the new `major.minor.patch` on a feature branch.
+2. Open a pull request into `develop`; once approved, merge the version bump into `develop`.
+3. Create a short-lived release branch from `develop`, run final checks, and merge that branch into `main`.
+4. Tag the merge commit on `main` (`git tag vX.Y.Z && git push origin vX.Y.Z`) and publish a GitHub Release from that tag.
+5. The `Build IDE Bundles` workflow runs automatically, attaches `dist/ide-rules.zip` to the release, and uploads the same file as a workflow artifact.
 
 ## Feedback
 

@@ -68,13 +68,6 @@ Run `uv run python src/convert_to_ide_formats.py` to build the IDE bundles
 before packaging a release. The default run converts the core pack; append
 `--source owasp` (or any directory under `sources/`) to include additional packs.
 
-## Maintainer Release Checklist
-
-1. Bump `[project].version` in `pyproject.toml` to the new `major.minor.patch` on a feature branch.
-2. Open a pull request into `dev`; once approved, merge the version bump into `dev`.
-3. Create a short-lived release branch from `dev`, run final checks, and merge that branch into `main`.
-4. Tag the merge commit on `main` (`git tag vX.Y.Z && git push origin vX.Y.Z`) and publish a GitHub Release from that tag. The `Build IDE Bundles` workflow runs automatically, attaches `dist/ide-rules.zip` to the release, and uploads the same file as a workflow artifact.
-
 ## Community
 
 - **📋 Issues**: [Report bugs or request features](https://github.com/project-codeguard/rules/issues)

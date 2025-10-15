@@ -72,9 +72,6 @@ uv run python src/convert_to_ide_formats.py
 cp -r ./dist/rules/.cursor/ /path/to/your/project/
 cp -r ./dist/rules/.windsurf/ /path/to/your/project/
 cp -r ./dist/rules/.github/ /path/to/your/project/
-
-# Maintainer tip: the GitHub Actions workflow `Build IDE Bundles` repeats this
-# process on every main push and attaches `dist/ide-rules.zip` to published releases.
 ```
 
 ## Verify Installation
