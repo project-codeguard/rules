@@ -73,7 +73,7 @@ class BaseFormat(ABC):
     @abstractmethod
     def get_output_subpath(self) -> str:
         """
-        Return the subdirectory path for this format relative to ide_rules.
+        Return the subdirectory path for this format relative to the generated rules root.
 
         Returns:
             Subdirectory path (e.g., '.cursor/rules', '.windsurf/rules')

@@ -23,7 +23,7 @@ class FormatOutput:
     Attributes:
         content: The fully formatted content with frontmatter
         extension: File extension including dot (e.g., '.mdc')
-        subpath: Subdirectory path relative to ide_rules (e.g., '.cursor/rules')
+        subpath: Subdirectory path relative to generated rules root (e.g., '.cursor/rules')
     """
 
     content: str
@@ -201,7 +201,7 @@ class RuleConverter:
 
         Example:
             try:
-                result = converter.convert("rules/my-rule.md")
+                result = converter.convert("sources/core/my-rule.md")
                 for format_name, output in result.outputs.items():
                     path = f"{output.subpath}/{result.basename}{output.extension}"
                     write_file(path, output.content)

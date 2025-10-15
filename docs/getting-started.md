@@ -46,7 +46,15 @@ Before you begin, familiarize yourself with how rules work in your IDE:
 
 ### Option 2: Build from Source
 
-If you want to customize or contribute to the rules:
+If you want to customize or contribute to the rules, the source markdown lives under `sources/`:
+
+```
+sources/
+├── core/        # Project CodeGuard rules
+└── owasp/       # OWASP-derived rule pack
+```
+
+Convert everything and create IDE bundles locally:
 
 ```bash
 # Clone the repository
@@ -56,13 +64,14 @@ cd rules
 # Install dependencies (requires Python 3.11+)
 uv sync
 
-# Convert unified rules to IDE-specific formats
-uv run python src/unified_to_all.py rules/ .
+# Convert unified rules to IDE-specific formats (sources/ → dist/rules/)
+uv run python src/convert_to_ide_formats.py
+# Add --source owasp (or any directory under sources/) to include extra packs
 
 # Copy the generated rules to your project
-cp -r ./ide_rules/.cursor/ /path/to/your/project/
-cp -r ./ide_rules/.windsurf/ /path/to/your/project/
-cp -r ./ide_rules/.github/ /path/to/your/project/
+cp -r ./dist/rules/.cursor/ /path/to/your/project/
+cp -r ./dist/rules/.windsurf/ /path/to/your/project/
+cp -r ./dist/rules/.github/ /path/to/your/project/
 ```
 
 ## Verify Installation
@@ -154,4 +163,3 @@ The rules have minimal performance impact, but if you experience issues:
 - **Documentation**: You're reading it! Check the [FAQ](faq.md) for common questions
 - **GitHub Issues**: [Report bugs or ask questions](https://github.com/project-codeguard/rules/issues)
 - **Discussions**: [Join the community discussion](https://github.com/project-codeguard/rules/discussions)
-

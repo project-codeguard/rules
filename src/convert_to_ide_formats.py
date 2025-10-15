@@ -1,24 +1,28 @@
 """
-Unified to All Formats Converter
+Convert Unified Rules to IDE Formats
 
-Converts unified markdown format to all IDE formats (Cursor, Windsurf, Copilot).
-Single source of truth for AI coding rules.
+Transforms the unified markdown sources into IDE-specific bundles (Cursor,
+Windsurf, Copilot). This script is the main entry point for producing
+distributable rule packs.
 """
 
+from argparse import ArgumentParser
 from pathlib import Path
+import shutil
+import sys
 
 from converter import RuleConverter
-from formats import CursorFormat, WindsurfFormat, CopilotFormat
+from formats import CopilotFormat, CursorFormat, WindsurfFormat
 from utils import get_version_from_pyproject
 
 
-def convert_rules(input_path: str, output_dir: str = ".") -> dict[str, list[str]]:
+def convert_rules(input_path: str, output_dir: str = "dist") -> dict[str, list[str]]:
     """
     Convert rule file(s) to all supported IDE formats using RuleConverter.
 
     Args:
         input_path: Path to a single .md file or folder containing .md files
-        output_dir: Output directory (default: current directory)
+        output_dir: Output directory (default: 'dist')
 
     Returns:
         Dictionary with 'success' and 'errors' lists:
@@ -28,7 +32,7 @@ def convert_rules(input_path: str, output_dir: str = ".") -> dict[str, list[str]
         }
 
     Example:
-        results = convert_rules("rules/", "/output/path")
+        results = convert_rules("sources/", "dist")
         print(f"Converted {len(results['success'])} rules")
     """
     version = get_version_from_pyproject()
@@ -53,14 +57,14 @@ def convert_rules(input_path: str, output_dir: str = ".") -> dict[str, list[str]
         files_to_process = [path]
         print(f"Converting file: {path.name}")
     else:
-        files_to_process = list(path.glob("*.md"))
+        files_to_process = sorted(path.rglob("*.md"))
         if not files_to_process:
             raise ValueError(f"No .md files found in {input_path}")
-        print(f"Converting {len(files_to_process)} files from: {path.name}")
+        print(f"Converting {len(files_to_process)} files from subtree: {path}")
 
     # Setup output directory
     output_base = Path(output_dir)
-    ide_rules_dir = output_base / "ide_rules"
+    generated_rules_dir = output_base / "rules"
 
     results = {"success": [], "errors": []}
 
@@ -75,7 +79,7 @@ def convert_rules(input_path: str, output_dir: str = ".") -> dict[str, list[str]
             for format_name, output in result.outputs.items():
                 # Construct output path
                 output_file = (
-                    ide_rules_dir
+                    generated_rules_dir
                     / output.subpath
                     / f"{result.basename}{output.extension}"
                 )
@@ -111,21 +115,65 @@ def convert_rules(input_path: str, output_dir: str = ".") -> dict[str, list[str]
     return results
 
 
+def _resolve_source_paths(args) -> list[Path]:
+    """
+    Determine which source paths to convert based on CLI arguments.
+
+    Priority:
+        1. Explicit positional paths (can be files or directories)
+        2. Named sources via --source (resolved relative to ./sources)
+        3. Default to ./sources/core
+    """
+    if args.inputs:
+        return [Path(path) for path in args.inputs]
+
+    if args.sources:
+        base = Path("sources")
+        return [(base / source_name) for source_name in args.sources]
+
+    return [Path("sources/core")]
+
+
 if __name__ == "__main__":
-    import sys
+    parser = ArgumentParser(
+        description="Convert unified rule markdown into IDE-specific bundles."
+    )
+    parser.add_argument(
+        "inputs",
+        nargs="*",
+        help="Optional explicit file or directory paths to convert (overrides --source).",
+    )
+    parser.add_argument(
+        "--source",
+        dest="sources",
+        action="append",
+        help="Named source under ./sources to convert (e.g., --source core --source owasp).",
+    )
+    parser.add_argument(
+        "--output-dir",
+        "-o",
+        default="dist",
+        help="Output directory for generated bundles (default: dist).",
+    )
 
-    if len(sys.argv) < 2:
-        print("Usage: python unified_to_all.py <input_file_or_folder> [output_dir]")
-        print("Examples:")
-        print("  python unified_to_all.py my-rule.md")
-        print("  python unified_to_all.py unified_rules/")
-        print("  python unified_to_all.py my-rule.md /output/path")
-        sys.exit(1)
+    cli_args = parser.parse_args()
+    source_paths = _resolve_source_paths(cli_args)
 
-    input_path = sys.argv[1]
-    output_dir = sys.argv[2] if len(sys.argv) > 2 else "."
+    generated_root = Path(cli_args.output_dir) / "rules"
+    if generated_root.exists():
+        print(f"Removing existing generated bundles at {generated_root}")
+        shutil.rmtree(generated_root)
 
-    results = convert_rules(input_path, output_dir)
+    print("Converting sources:")
+    for path in source_paths:
+        print(f"  • {path}")
 
-    if results["errors"]:
+    aggregated = {"success": [], "errors": []}
+    for source_path in source_paths:
+        results = convert_rules(str(source_path), cli_args.output_dir)
+        aggregated["success"].extend(results["success"])
+        aggregated["errors"].extend(results["errors"])
+
+    if aggregated["errors"]:
+        print("\nOne or more conversions failed.")
         sys.exit(1)

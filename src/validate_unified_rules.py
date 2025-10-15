@@ -61,21 +61,25 @@ def validate_rule(file_path: Path) -> dict[str, list[str]]:
 
 
 def main():
-    """Validate all rules in the rules directory."""
-    rules_dir = Path(sys.argv[1] if len(sys.argv) > 1 else "rules")
+    """Validate all rules within a sources directory (recursively)."""
+    rules_dir = Path(sys.argv[1] if len(sys.argv) > 1 else "sources")
 
     if not rules_dir.exists():
         print(f"❌ Directory {rules_dir} does not exist")
         sys.exit(1)
 
-    # Find all .md files (excluding README)
-    md_files = [f for f in rules_dir.glob("*.md") if f.name.lower() != "readme.md"]
+    # Find all .md files recursively (excluding README markers)
+    md_files = [
+        f
+        for f in rules_dir.rglob("*.md")
+        if f.name.lower() != "readme.md"
+    ]
 
     if not md_files:
         print(f"❌ No rule files found in {rules_dir}")
         sys.exit(1)
 
-    print(f"🔍 Validating {len(md_files)} rules in {rules_dir}\n")
+    print(f"🔍 Validating {len(md_files)} rules under {rules_dir}\n")
 
     passed = 0
     failed = 0

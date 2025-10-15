@@ -53,6 +53,21 @@ Get started in minutes:
 3. **AI assistants** reference these rules when generating or reviewing code
 4. **Secure code** is produced automatically without developer intervention
 
+## Repository Layout
+
+```
+sources/
+├── core/        # Project CodeGuard rule set
+└── owasp/       # OWASP-derived rule pack
+
+dist/rules/      # Generated IDE bundles (created by the converter)
+src/             # Conversion and validation tools
+```
+
+Run `uv run python src/convert_to_ide_formats.py` to build the IDE bundles
+before packaging a release. The default run converts the core pack; append
+`--source owasp` (or any directory under `sources/`) to include additional packs.
+
 ## Community
 
 - **📋 Issues**: [Report bugs or request features](https://github.com/project-codeguard/rules/issues)
