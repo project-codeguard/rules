@@ -6,10 +6,11 @@ on:
     branches:
       - main
       - feature/rule-structure-refactor
-    paths:
-      - 'sources/**'
-      - 'src/**'
-      - 'pyproject.toml'
+    # Temporarily removed path filters for testing
+    # paths:
+    #   - 'sources/**'
+    #   - 'src/**'
+    #   - 'pyproject.toml'
   release:
     types: [published]
   workflow_dispatch:
