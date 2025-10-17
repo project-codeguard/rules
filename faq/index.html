@@ -381,6 +381,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#q-will-these-rules-consume-a-lot-of-the-ai-agents-context-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: Will these rules consume a lot of the AI agent's context window?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q-what-is-the-additional_rules-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: What is the additional_rules folder?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q-how-can-i-use-the-rules-in-my-own-ai-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: How can I use the rules in my own AI agent?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#q-why-does-the-downloaded-release-folder-appear-empty" class="md-nav__link">
     <span class="md-ellipsis">
       Q: Why does the downloaded release folder appear empty?
@@ -496,6 +523,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#q-will-these-rules-consume-a-lot-of-the-ai-agents-context-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: Will these rules consume a lot of the AI agent's context window?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q-what-is-the-additional_rules-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: What is the additional_rules folder?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q-how-can-i-use-the-rules-in-my-own-ai-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: How can I use the rules in my own AI agent?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#q-why-does-the-downloaded-release-folder-appear-empty" class="md-nav__link">
     <span class="md-ellipsis">
       Q: Why does the downloaded release folder appear empty?
@@ -585,6 +639,15 @@
 <li><strong>GitHub Copilot</strong>: Copy <code>.github/instructions/</code> directory to your project root</li>
 <li>Restart your IDE and start coding - the AI assistant will automatically follow the security rules</li>
 </ol>
+<hr />
+<h2 id="q-will-these-rules-consume-a-lot-of-the-ai-agents-context-window">Q: Will these rules consume a lot of the AI agent's <strong>context window</strong>?</h2>
+<p><strong>A:</strong> No. The always-on rules are designed to be lightweight and efficient, and should not consume a lot of the AI agent's context window. The "glob" rules are designed to be applied only to the related file types specified in the rule.</p>
+<hr />
+<h2 id="q-what-is-the-additional_rules-folder">Q: What is the <code>additional_rules</code> folder?</h2>
+<p><strong>A:</strong> The <code>additional_rules</code> folder contains rules that can be used to supplement the Project CodeGuard core rules. These rules are not always-on and are not included in the downloaded release. They are only available in the <code>project-codeguard/rules</code> repository for code review and security assessments post-code generation.</p>
+<hr />
+<h2 id="q-how-can-i-use-the-rules-in-my-own-ai-agent">Q: How can I use the rules in my own AI agent?</h2>
+<p><strong>A:</strong> You can use the rules in your own AI agent by creating a custom ruleset. You can create a custom ruleset by creating a new file in the <code>.cursor/rules</code>, <code>.windsurf/rules</code>, or <code>.github/instructions</code> directories and adding the rules you want to apply. You can also use the <code>project-codeguard/rules</code> repository as a template to create your own ruleset.</p>
 <hr />
 <h2 id="q-why-does-the-downloaded-release-folder-appear-empty">Q: Why does the downloaded release folder appear empty?</h2>
 <p><strong>A:</strong> After downloading and extracting the release, the folders may appear empty because the rule directories (<code>.cursor/</code>, <code>.windsurf/</code>, <code>.github/</code>) start with a dot (<code>.</code>) and are hidden by default on most operating systems.</p>
