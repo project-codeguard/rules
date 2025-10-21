@@ -1,0 +1,1270 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project CodeGuard is an AI model-agnostic security framework and ruleset that embeds secure-by-default practices into AI coding workflows (generation and review). It ships core security rules, translators for popular coding agents, and validators to test rule compliance.">
+      
+      
+        <meta name="author" content="Cisco AI-enabled Security Engineering, Security and Trust">
+      
+      
+        <link rel="canonical" href="https://project-codeguard.org/claude-code-skill-plugin/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>CodeGuard Claude Code Plugin - Project CodeGuard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#codeguard-claude-code-plugin" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Project CodeGuard" class="md-header__button md-logo" aria-label="Project CodeGuard" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Project CodeGuard
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CodeGuard Claude Code Plugin
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/project-codeguard/rules" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    project-codeguard/rules
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Project CodeGuard" class="md-nav__button md-logo" aria-label="Project CodeGuard" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Project CodeGuard
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/project-codeguard/rules" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    project-codeguard/rules
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-an-agent-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is an Agent Skill?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How It Works
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How It Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skill-activation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skill Activation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rule Categories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-writing-database-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1: Writing Database Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-handling-api-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2: Handling API Keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-password-hashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3: Password Hashing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-file-upload-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 4: File Upload Security
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team Deployment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-security-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      All Security Rules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="All Security Rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#always-apply-rules-4-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Always-Apply Rules (4 rules)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-specific-rules-18-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context-Specific Rules (18 rules)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updating
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disabling-the-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disabling the Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-specific-rule-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Specific Rule Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-custom-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Custom Workflows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-not-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Not Loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules-not-being-applied" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules Not Being Applied
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-plugin-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking Plugin Version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#during-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      During Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#during-code-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      During Code Review
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Teams
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the Plugin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#language-specific-security-reviews" class="md-nav__link">
+    <span class="md-ellipsis">
+      Language-Specific Security Reviews
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-specific-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature-Specific Guidance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-first-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security-First Development
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugin-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugin Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-claude-uses-the-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Claude Uses the Skill
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version History
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Version History">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.0.0
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="codeguard-claude-code-plugin">CodeGuard Claude Code Plugin</h1>
+<h2 id="overview">Overview</h2>
+<p>This document explains how Project CodeGuard is packaged as a Claude Code plugin (Agent Skill) and how to use it effectively in your AI-assisted coding workflows.</p>
+<p>Project CodeGuard is an <strong>open-source, model-agnostic security framework</strong> that embeds secure-by-default practices into AI coding workflows. The plugin makes it easy to integrate these security rules with Claude Code.</p>
+<h2 id="what-is-an-agent-skill">What is an Agent Skill?</h2>
+<p>Agent Skills are model-invoked capabilities that Claude autonomously uses based on task context. The CodeGuard security skill provides comprehensive security guidance that Claude applies automatically when writing, reviewing, or modifying code.</p>
+<h2 id="installation">Installation</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Claude Code installed</li>
+<li>Basic familiarity with Claude Code's plugin system</li>
+</ul>
+<h3 id="installation-steps">Installation Steps</h3>
+<ol>
+<li>
+<p><strong>Add the Project CodeGuard marketplace:</strong>
+   <code>bash
+   /plugin marketplace add project-codeguard/rules</code></p>
+</li>
+<li>
+<p><strong>Install the security plugin:</strong>
+   <code>bash
+   /plugin install codeguard-security@project-codeguard</code></p>
+</li>
+<li>
+<p><strong>Restart Claude Code</strong> (if prompted)</p>
+</li>
+<li>
+<p><strong>Verify installation:</strong>
+   The skill is automatically loaded. Start coding and Claude will apply security rules automatically.</p>
+</li>
+</ol>
+<h2 id="how-it-works">How It Works</h2>
+<p>The CodeGuard skill integrates <strong>22 security rule files</strong> covering all major security domains across languages, frameworks, and technology stacks. The skill follows a simple but powerful workflow:</p>
+<h3 id="skill-activation">Skill Activation</h3>
+<p>The skill activates automatically when:
+- Writing new code in any language
+- Reviewing or modifying existing code
+- Implementing security-sensitive features (authentication, cryptography, data handling)
+- Working with user input, databases, APIs, or external services
+- Configuring cloud infrastructure, CI/CD pipelines, or containers
+- Handling sensitive data, credentials, or cryptographic operations</p>
+<h3 id="security-workflow">Security Workflow</h3>
+<p>When generating or reviewing code, Claude follows this 3-step workflow:</p>
+<p><strong>1. Initial Security Check</strong>
+- Will this handle credentials? → Apply <code>codeguard-1-hardcoded-credentials</code>
+- What language is being used? → Identify applicable language-specific rules
+- What security domains are involved? → Load relevant rule files</p>
+<p><strong>2. Code Generation</strong>
+- Apply secure-by-default patterns from relevant CodeGuard rules
+- Add security-relevant comments explaining choices</p>
+<p><strong>3. Security Review</strong>
+- Review against implementation checklists in each rule
+- Verify no hardcoded credentials or secrets
+- Validate that all applicable rules have been followed
+- Explain which security rules were applied
+- Highlight security features implemented</p>
+<h3 id="rule-categories">Rule Categories</h3>
+<p><strong>Always-Apply Rules</strong> (4 critical rules checked on every code operation):
+- <code>codeguard-1-hardcoded-credentials</code> - Never hardcode secrets or credentials
+- <code>codeguard-1-crypto-algorithms</code> - Use modern cryptographic algorithms
+- <code>codeguard-1-digital-certificates</code> - Validate certificate security
+- <code>codeguard-1-safe-c-functions</code> - Replace unsafe C/C++ functions</p>
+<p><strong>Context-Specific Rules</strong> (18 rules applied based on technology and features):
+- Input validation, authentication, authorization, APIs, data storage, privacy, logging, cryptography, file handling, serialization, supply chain, DevOps, cloud, Kubernetes, IaC, frameworks, and mobile security</p>
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="example-1-writing-database-code">Example 1: Writing Database Code</h3>
+<pre><code class="language-python"># Claude will automatically use parameterized queries
+def get_user(email):
+    # Secure pattern following codeguard-0-input-validation-injection
+    query = &quot;SELECT * FROM users WHERE email = ?&quot;
+    return cursor.execute(query, (email,))
+</code></pre>
+<h3 id="example-2-handling-api-keys">Example 2: Handling API Keys</h3>
+<pre><code class="language-javascript">// Claude will prevent hardcoded credentials
+// and suggest environment variables
+const apiKey = process.env.STRIPE_API_KEY;
+if (!apiKey) {
+  throw new Error(&quot;STRIPE_API_KEY not configured&quot;);
+}
+</code></pre>
+<h3 id="example-3-password-hashing">Example 3: Password Hashing</h3>
+<pre><code class="language-python"># Claude will suggest modern password hashing
+from argon2 import PasswordHasher
+ph = PasswordHasher()
+password_hash = ph.hash(password)
+</code></pre>
+<h3 id="example-4-file-upload-security">Example 4: File Upload Security</h3>
+<pre><code class="language-javascript">// Claude will enforce file validation
+const multer = require('multer');
+const upload = multer({
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileFilter: (req, file, cb) =&gt; {
+    // Validate file type by content, not just extension
+    if (file.mimetype.startsWith('image/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only images allowed'));
+    }
+  }
+});
+</code></pre>
+<h2 id="team-deployment">Team Deployment</h2>
+<p>For organizations, deploy CodeGuard to all developers automatically:</p>
+<ol>
+<li>
+<p>Add to your project's <code>.claude/settings.json</code>:
+   <code>json
+   {
+     "marketplaces": [{"source": "project-codeguard/rules"}],
+     "plugins": [
+       {
+         "name": "codeguard-security",
+         "marketplace": "project-codeguard",
+         "enabled": true
+       }
+     ]
+   }</code></p>
+</li>
+<li>
+<p>Team members trust the repository folder</p>
+</li>
+<li>
+<p>CodeGuard installs automatically for everyone</p>
+</li>
+</ol>
+<h2 id="all-security-rules">All Security Rules</h2>
+<p>The plugin includes 22 comprehensive security rules organized into two categories:</p>
+<h3 id="always-apply-rules-4-rules">Always-Apply Rules (4 rules)</h3>
+<p>These critical rules are checked on <strong>every</strong> code operation:</p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>codeguard-1-hardcoded-credentials</code></td>
+<td>Prevent secrets, passwords, API keys, tokens in source code</td>
+</tr>
+<tr>
+<td><code>codeguard-1-crypto-algorithms</code></td>
+<td>Ban weak algorithms (MD5, SHA-1, DES); use modern alternatives</td>
+</tr>
+<tr>
+<td><code>codeguard-1-digital-certificates</code></td>
+<td>Validate certificate expiration, key strength, signature algorithms</td>
+</tr>
+<tr>
+<td><code>codeguard-1-safe-c-functions</code></td>
+<td>Replace unsafe C/C++ functions (gets, strcpy, strcat, sprintf)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="context-specific-rules-18-rules">Context-Specific Rules (18 rules)</h3>
+<p>These rules apply based on the programming language, framework, or feature being implemented. Claude automatically selects relevant rules based on context:</p>
+<table>
+<thead>
+<tr>
+<th>Security Domain</th>
+<th>Rules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input &amp; Injection</strong></td>
+<td><code>codeguard-0-input-validation-injection</code></td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td><code>codeguard-0-authentication-mfa</code></td>
+</tr>
+<tr>
+<td><strong>Authorization</strong></td>
+<td><code>codeguard-0-authorization-access-control</code></td>
+</tr>
+<tr>
+<td><strong>Sessions</strong></td>
+<td><code>codeguard-0-session-management-and-cookies</code></td>
+</tr>
+<tr>
+<td><strong>APIs &amp; Web</strong></td>
+<td><code>codeguard-0-api-web-services</code>, <code>codeguard-0-client-side-web-security</code></td>
+</tr>
+<tr>
+<td><strong>Data &amp; Privacy</strong></td>
+<td><code>codeguard-0-data-storage</code>, <code>codeguard-0-privacy-data-protection</code>, <code>codeguard-0-logging</code></td>
+</tr>
+<tr>
+<td><strong>Cryptography</strong></td>
+<td><code>codeguard-0-additional-cryptography</code></td>
+</tr>
+<tr>
+<td><strong>Files &amp; Serialization</strong></td>
+<td><code>codeguard-0-file-handling-and-uploads</code>, <code>codeguard-0-xml-and-serialization</code></td>
+</tr>
+<tr>
+<td><strong>Infrastructure</strong></td>
+<td><code>codeguard-0-supply-chain-security</code>, <code>codeguard-0-devops-ci-cd-containers</code>, <code>codeguard-0-cloud-orchestration-kubernetes</code>, <code>codeguard-0-iac-security</code></td>
+</tr>
+<tr>
+<td><strong>Platforms</strong></td>
+<td><code>codeguard-0-framework-and-languages</code>, <code>codeguard-0-mobile-apps</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> Each rule file contains detailed guidance, checklists, and examples. Claude references these automatically based on the code context.</p>
+</blockquote>
+<h2 id="updating">Updating</h2>
+<p>To update to the latest security rules:</p>
+<pre><code class="language-bash">/plugin update codeguard-security@project-codeguard
+</code></pre>
+<h2 id="customization">Customization</h2>
+<h3 id="disabling-the-plugin">Disabling the Plugin</h3>
+<p>If needed, temporarily disable:</p>
+<pre><code class="language-bash">/plugin disable codeguard-security@project-codeguard
+</code></pre>
+<p>Re-enable:</p>
+<pre><code class="language-bash">/plugin enable codeguard-security@project-codeguard
+</code></pre>
+<h3 id="using-specific-rule-files">Using Specific Rule Files</h3>
+<p>All rule files are available in the <code>skills/software-security/rules/</code> directory within the plugin. You can reference specific rules in prompts:</p>
+<pre><code>Claude, please review this authentication code against the 
+codeguard-0-authentication-mfa.md guidelines
+</code></pre>
+<h3 id="creating-custom-workflows">Creating Custom Workflows</h3>
+<p>You can create custom security review workflows:</p>
+<pre><code>Claude, perform the following security checks on this code:
+1. Check for hardcoded credentials
+2. Validate input sanitization
+3. Verify authentication implementation
+4. Review authorization logic
+Use the relevant CodeGuard rules for each check.
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="plugin-not-loading">Plugin Not Loading</h3>
+<ol>
+<li>Verify installation: <code>/plugin</code> → "Manage Plugins"</li>
+<li>Check that <code>codeguard-security</code> is listed and enabled</li>
+<li>Restart Claude Code</li>
+</ol>
+<h3 id="rules-not-being-applied">Rules Not Being Applied</h3>
+<ol>
+<li>Confirm the plugin is enabled</li>
+<li>Try explicitly mentioning security in your prompt</li>
+<li>Check that you're working with supported languages</li>
+</ol>
+<h3 id="checking-plugin-version">Checking Plugin Version</h3>
+<pre><code class="language-bash">/plugin list
+</code></pre>
+<p>Look for <code>codeguard-security@project-codeguard</code> and note the version number.</p>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="during-development">During Development</h3>
+<ol>
+<li><strong>Trust the automation</strong>: Let Claude apply security rules automatically</li>
+<li><strong>Learn from suggestions</strong>: When Claude suggests secure alternatives, understand why</li>
+<li><strong>Ask for explanations</strong>: Request Claude to explain security recommendations</li>
+<li><strong>Use proactive security</strong>: Ask Claude for security guidance before implementing features</li>
+</ol>
+<h3 id="during-code-review">During Code Review</h3>
+<ol>
+<li><strong>Explicit security review</strong>: Ask Claude to perform comprehensive security analysis</li>
+<li><strong>Reference specific rules</strong>: Mention rule names for focused review (e.g., "Review against codeguard-0-authentication-mfa")</li>
+<li><strong>Check always-apply rules</strong>: Ensure credentials, crypto algorithms, certificates, and C functions are handled securely</li>
+<li><strong>Validate workflow</strong>: Confirm that Claude followed the 3-step security workflow</li>
+</ol>
+<h3 id="for-teams">For Teams</h3>
+<ol>
+<li><strong>Standardize installation</strong>: Use <code>.claude/settings.json</code> for consistent setup across the team</li>
+<li><strong>Version control</strong>: Track which plugin version your team uses</li>
+<li><strong>Update regularly</strong>: Keep rules current with latest security guidance</li>
+<li><strong>Share learnings</strong>: Document security patterns specific to your stack</li>
+<li><strong>Train developers</strong>: Ensure team members understand how to work with AI-assisted security</li>
+</ol>
+<h2 id="building-the-plugin">Building the Plugin</h2>
+<p>If you're contributing to Project CodeGuard or need to rebuild the plugin:</p>
+<pre><code class="language-bash">cd /path/to/project-codeguard/rules
+./src/prepare-claude-code-plugin.sh
+</code></pre>
+<p>This script:
+- Copies all rule files from <code>rules/</code> to <code>skills/software-security/rules/</code>
+- Verifies the plugin structure
+- Prepares the plugin for distribution or local testing</p>
+<h2 id="advanced-usage">Advanced Usage</h2>
+<h3 id="language-specific-security-reviews">Language-Specific Security Reviews</h3>
+<p>Request focused reviews for specific languages:</p>
+<pre><code>Claude, perform a security review of this Python code with emphasis on:
+- SQL injection prevention
+- Input validation
+- Authentication best practices
+</code></pre>
+<h3 id="feature-specific-guidance">Feature-Specific Guidance</h3>
+<p>Get proactive security guidance when building features:</p>
+<pre><code>Claude, I'm about to implement a file upload feature. 
+What security considerations should I keep in mind 
+according to CodeGuard rules?
+</code></pre>
+<h3 id="security-first-development">Security-First Development</h3>
+<p>Use CodeGuard from the planning phase:</p>
+<pre><code>Claude, help me design a secure authentication system for a web app.
+Use CodeGuard rules to guide the architecture.
+</code></pre>
+<h2 id="plugin-architecture">Plugin Architecture</h2>
+<h3 id="file-structure">File Structure</h3>
+<pre><code>project-codeguard/rules/
+├── .claude-plugin/
+│   ├── plugin.json                  # Plugin metadata
+│   └── marketplace.json             # Marketplace catalog
+│
+├── skills/
+│   └── software-security/
+│       ├── SKILL.md                 # Skill definition and workflow
+│       └── rules/                   # All 22 CodeGuard security rules
+│           ├── codeguard-1-*.md     # 4 always-apply rules
+│           └── codeguard-0-*.md     # 18 context-specific rules
+│
+└── src/
+    └── prepare-claude-code-plugin.sh  # Build script
+</code></pre>
+<h3 id="how-claude-uses-the-skill">How Claude Uses the Skill</h3>
+<p>When you write or review code, Claude follows this workflow:</p>
+<ol>
+<li><strong>Reads SKILL.md</strong> - Understands when to activate the skill and what workflow to follow</li>
+<li><strong>Initial Security Check</strong> - Identifies which rules apply based on:</li>
+<li>Whether credentials are involved (always-apply rule)</li>
+<li>The programming language in use</li>
+<li>The security domains involved (auth, crypto, APIs, etc.)</li>
+<li><strong>Applies Security Rules</strong> - References relevant rule files to:</li>
+<li>Use secure-by-default patterns</li>
+<li>Follow implementation checklists</li>
+<li>Apply language-specific guidance</li>
+<li><strong>Generates Secure Code</strong> - Produces code that:</li>
+<li>Never hardcodes credentials</li>
+<li>Uses modern cryptographic algorithms</li>
+<li>Implements input validation</li>
+<li>Follows security best practices</li>
+<li><strong>Provides Explanations</strong> - Documents which security rules were applied and highlights security features implemented</li>
+</ol>
+<h2 id="contributing">Contributing</h2>
+<p>Found an issue with the plugin or want to improve it?</p>
+<ol>
+<li><strong>Report issues</strong>: <a href="https://github.com/project-codeguard/rules/issues">GitHub Issues</a></li>
+<li><strong>Suggest rules</strong>: <a href="https://github.com/project-codeguard/rules/discussions">GitHub Discussions</a></li>
+<li><strong>Contribute</strong>: <a href="https://github.com/project-codeguard/rules/blob/main/CONTRIBUTING.md">Contributing Guide</a></li>
+</ol>
+<h2 id="version-history">Version History</h2>
+<h3 id="version-100">Version 1.0.0</h3>
+<ul>
+<li>Initial release</li>
+<li>22 comprehensive security rules</li>
+<li>4 always-apply rules</li>
+<li>18 context-specific rules</li>
+<li>Support for all major programming languages</li>
+<li>Complete technology stack coverage</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><strong>Project Website</strong>: <a href="https://project-codeguard.org">https://project-codeguard.org</a></li>
+<li><strong>GitHub Repository</strong>: <a href="https://github.com/project-codeguard/rules">https://github.com/project-codeguard/rules</a></li>
+<li><strong>Documentation</strong>: <a href="https://project-codeguard.org/getting-started/">https://project-codeguard.org/getting-started/</a></li>
+<li><strong>Issue Tracker</strong>: <a href="https://github.com/project-codeguard/rules/issues">https://github.com/project-codeguard/rules/issues</a></li>
+</ul>
+<h2 id="license">License</h2>
+<ul>
+<li><strong>Rules</strong>: Creative Commons Attribution 4.0 International (CC BY 4.0)</li>
+<li><strong>Tools</strong>: Apache License 2.0</li>
+</ul>
+<h2 id="support">Support</h2>
+<p>Need help? We're here for you:</p>
+<ol>
+<li><strong>Documentation</strong>: Start with <a href="https://project-codeguard.org/getting-started/">Getting Started Guide</a></li>
+<li><strong>Community</strong>: Join <a href="https://github.com/project-codeguard/rules/discussions">GitHub Discussions</a></li>
+<li><strong>Issues</strong>: Report bugs via <a href="https://github.com/project-codeguard/rules/issues">GitHub Issues</a></li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
