@@ -1,5 +1,5 @@
 ---
-applyTo: **/*.c,**/*.h,**/*.js,**/*.jsx,**/*.mjs,**/*.yaml,**/*.yml
+applyTo: '**/*.c,**/*.h,**/*.js,**/*.jsx,**/*.mjs,**/*.yaml,**/*.yml'
 title: Logging & monitoring (structured telemetry, redaction, integrity, detection
   & alerting)
 version: 1.0.0

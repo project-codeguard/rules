@@ -1,5 +1,5 @@
 ---
-applyTo: **/*
+applyTo: '**/*'
 title: Safe C Functions and Memory and String Safety Guidelines
 version: 1.0.0
 ---

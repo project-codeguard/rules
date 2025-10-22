@@ -1,5 +1,5 @@
 ---
-applyTo: **/*.js,**/*.jsx,**/*.mjs,**/*.yaml,**/*.yml
+applyTo: '**/*.js,**/*.jsx,**/*.mjs,**/*.yaml,**/*.yml'
 title: Kubernetes hardening (RBAC, admission policies, network policies, secrets,
   supply chain)
 version: 1.0.0

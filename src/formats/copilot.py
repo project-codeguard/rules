@@ -47,7 +47,7 @@ class CopilotFormat(BaseFormat):
         yaml_lines = []
 
         # Add applyTo (Copilot's equivalent of globs)
-        yaml_lines.append(f"applyTo: {globs}")
+        yaml_lines.append(f"applyTo: '{globs}'")
 
         # Add title
         title = self._format_yaml_field("title", rule.description)
