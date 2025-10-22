@@ -1,5 +1,5 @@
 ---
-applyTo: **/*.bash,**/*.c,**/*.d,**/*.h,**/*.js,**/*.jsx,**/*.mjs,**/*.ps1,**/*.rb,**/*.sh,**/*.yaml,**/*.yml
+applyTo: '**/*.bash,**/*.c,**/*.d,**/*.h,**/*.js,**/*.jsx,**/*.mjs,**/*.ps1,**/*.rb,**/*.sh,**/*.yaml,**/*.yml'
 title: Infrastructure as Code Security
 version: 1.0.0
 ---

@@ -1,5 +1,5 @@
 ---
-applyTo: **/*.c,**/*.go,**/*.h,**/*.java,**/*.js,**/*.jsx,**/*.kt,**/*.kts,**/*.m,**/*.mjs,**/*.php,**/*.py,**/*.pyi,**/*.pyx,**/*.rb,**/*.swift,**/*.ts,**/*.tsx
+applyTo: '**/*.c,**/*.go,**/*.h,**/*.java,**/*.js,**/*.jsx,**/*.kt,**/*.kts,**/*.m,**/*.mjs,**/*.php,**/*.py,**/*.pyi,**/*.pyx,**/*.rb,**/*.swift,**/*.ts,**/*.tsx'
 title: Authentication and MFA best practices (passwords, MFA, OAuth/OIDC, SAML, recovery,
   tokens)
 version: 1.0.0

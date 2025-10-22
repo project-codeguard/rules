@@ -1,5 +1,5 @@
 ---
-applyTo: **/*.c,**/*.go,**/*.h,**/*.java,**/*.js,**/*.jsx,**/*.kt,**/*.kts,**/*.m,**/*.mjs,**/*.php,**/*.py,**/*.pyi,**/*.pyx,**/*.rb,**/*.swift,**/*.ts,**/*.tsx,**/*.wsdl,**/*.xml,**/*.xsd,**/*.xslt,**/*.yaml,**/*.yml
+applyTo: '**/*.c,**/*.go,**/*.h,**/*.java,**/*.js,**/*.jsx,**/*.kt,**/*.kts,**/*.m,**/*.mjs,**/*.php,**/*.py,**/*.pyi,**/*.pyx,**/*.rb,**/*.swift,**/*.ts,**/*.tsx,**/*.wsdl,**/*.xml,**/*.xsd,**/*.xslt,**/*.yaml,**/*.yml'
 title: Additional Cryptography guidance
 version: 1.0.0
 ---

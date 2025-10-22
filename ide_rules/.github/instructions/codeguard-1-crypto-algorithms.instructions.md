@@ -1,5 +1,5 @@
 ---
-applyTo: **/*
+applyTo: '**/*'
 title: Cryptographic Security Guidelines
 version: 1.0.0
 ---
