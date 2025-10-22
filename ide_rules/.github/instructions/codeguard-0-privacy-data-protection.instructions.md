@@ -1,5 +1,5 @@
 ---
-applyTo: **/*.js,**/*.jsx,**/*.m,**/*.mjs,**/*.yaml,**/*.yml
+applyTo: '**/*.js,**/*.jsx,**/*.m,**/*.mjs,**/*.yaml,**/*.yml'
 title: Privacy & data protection (minimization, classification, encryption, rights,
   transparency)
 version: 1.0.0

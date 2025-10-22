@@ -1,5 +1,5 @@
 ---
-applyTo: **/*
+applyTo: '**/*'
 title: No Hardcoded Credentials
 version: 1.0.0
 ---
