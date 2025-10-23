@@ -84,18 +84,6 @@ class BaseFormat(ABC):
         """
         pass
 
-    def outputs_to_ide_rules(self) -> bool:
-        """
-        Return whether this format outputs to the ide_rules directory.
-        
-        Returns:
-            True if output should go to ide_rules/, False for project root
-            
-        Override this method if your format outputs to project root instead
-        of ide_rules/ (e.g., Claude Code plugin outputs to skills/)
-        """
-        return True
-
     @abstractmethod
     def generate(self, rule: ProcessedRule, globs: str) -> str:
         """

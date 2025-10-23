@@ -1,0 +1,62 @@
+---
+name: software-security
+description: A software security skill that integrates with Project CodeGuard to help AI coding agents write secure code and prevent common vulnerabilities. Use this skill when writing, reviewing, or modifying code to ensure secure-by-default practices are followed.
+metadata:
+codeguard-version: "1.0.0"
+framework: "Project CodeGuard"
+purpose: "Embed secure-by-default practices into AI coding workflows"
+---
+
+# Software Security Skill (Project CodeGuard)
+This skill provides comprehensive security guidance to help AI coding agents generate secure code and prevent common vulnerabilities. It is based on **Project CodeGuard**, an open-source, model-agnostic security framework that embeds secure-by-default practices into AI coding workflows.
+
+## When to Use This Skill
+This skill should be activated when:
+- Writing new code in any language
+- Reviewing or modifying existing code
+- Implementing security-sensitive features (authentication, cryptography, data handling, etc.)
+- Working with user input, databases, APIs, or external services
+- Configuring cloud infrastructure, CI/CD pipelines, or containers
+- Handling sensitive data, credentials, or cryptographic operations
+
+## How to Use This Skill
+When writing or reviewing code:
+1. Always-Apply Rules: Some rules MUST be checked on every code operation:
+- `codeguard-1-hardcoded-credentials.md` - Never hardcode secrets, passwords, API keys, or tokens
+- `codeguard-1-crypto-algorithms.md` - Use only modern, secure cryptographic algorithms
+- `codeguard-1-digital-certificates.md` - Validate and manage digital certificates securely
+- `codeguard-1-safe-c-functions.md` - Avoid unsafe C/C++ functions and use safe alternatives
+2. Context-Specific Rules: Apply rules from /rules directory based on the language of the feature being implemented using the table given below:
+<!-- LANGUAGE_MAPPINGS_START -->
+<!-- LANGUAGE_MAPPINGS_END -->
+3. Proactive Security: Don't just avoid vulnerabilities-actively implement secure patterns:
+- Use parameterized queries for database access
+- Validate and sanitize all user input
+- Apply least-privilege principles
+- Use modern cryptographic algorithms and libraries
+- Implement defense-in-depth strategies
+
+## CodeGuard Security Rules
+The security rules are available in the `rules/` directory.
+
+### Usage Workflow
+When generating or reviewing code, follow this workflow:
+
+### 1. Initial Security Check
+Before writing any code:
+- Check: Will this handle credentials? → Apply codeguard-1-hardcoded-credentials
+- Check: What language am I using? → Identify applicable language-specific rules
+- Check: What security domains are involved? → Load relevant rule files
+
+### 2. Code Generation
+While writing code:
+- Apply secure-by-default patterns from relevant Project CodeGuard rules
+- Add security-relevant comments explaining choices
+
+### 3. Security Review
+After writing code:
+- Review against implementation checklists in each rule
+- Verify no hardcoded credentials or secrets
+- Validate that all the rules have been successfully followed when applicable.
+- Explain which security rules were applied
+- Highlight security features implemented

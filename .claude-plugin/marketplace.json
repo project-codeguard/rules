@@ -15,8 +15,11 @@
       "description": "Comprehensive security rules for AI coding agents",
       "version": "1.0.0",
       "repository": "https://github.com/project-codeguard/rules.git",
-      "tags": ["security", "code-review", "vulnerability-prevention"]
+      "tags": [
+        "security",
+        "code-review",
+        "vulnerability-prevention"
+      ]
     }
   ]
 }
-

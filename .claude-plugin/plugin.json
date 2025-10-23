@@ -9,6 +9,11 @@
   "license": "CC-BY-4.0 (rules), Apache-2.0 (tools)",
   "homepage": "https://github.com/project-codeguard/rules",
   "repository": "https://github.com/project-codeguard/rules.git",
-  "keywords": ["security", "secure-coding", "vulnerability-prevention", "code-review", "appsec"]
+  "keywords": [
+    "security",
+    "secure-coding",
+    "vulnerability-prevention",
+    "code-review",
+    "appsec"
+  ]
 }
-

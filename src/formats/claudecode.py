@@ -37,10 +37,6 @@ class ClaudeCodeFormat(BaseFormat):
         """Return Claude Code output subdirectory."""
         return "skills/software-security/rules"
 
-    def outputs_to_ide_rules(self) -> bool:
-        """Claude Code outputs to project root, not ide_rules/."""
-        return False
-
     def generate(self, rule: ProcessedRule, globs: str) -> str:
         """
         Generate Claude Code .md format.

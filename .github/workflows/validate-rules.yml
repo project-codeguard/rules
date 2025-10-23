@@ -1,0 +1,125 @@
+---
+name: Validate Rules
+
+on:
+  pull_request:
+    paths:
+      - 'sources/**'
+      - 'src/**'
+      - 'pyproject.toml'
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'sources/**'
+      - 'src/**'
+      - 'pyproject.toml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Validate unified rules
+        run: uv run python src/validate_unified_rules.py sources/
+
+      - name: Check required core rule files exist
+        run: |
+          echo "Checking for required core rule files..."
+          required_files=(
+            "sources/core/codeguard-1-hardcoded-credentials.md"
+            "sources/core/codeguard-1-crypto-algorithms.md"
+            "sources/core/codeguard-1-digital-certificates.md"
+            "sources/core/codeguard-1-safe-c-functions.md"
+            "sources/core/codeguard-SKILLS.md.template"
+          )
+          
+          missing=0
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "❌ Missing required file: $file"
+              missing=1
+            else
+              echo "✅ Found: $file"
+            fi
+          done
+          
+          if [ $missing -eq 1 ]; then
+            exit 1
+          fi
+
+      - name: Test conversion to IDE formats
+        run: |
+          echo "Testing IDE format conversion..."
+          uv run python src/convert_to_ide_formats.py --output-dir test-output
+          
+          # Check that files were generated
+          if [ ! -d "test-output/.cursor" ]; then
+            echo "❌ Cursor rules not generated"
+            exit 1
+          fi
+          
+          if [ ! -d "test-output/.windsurf" ]; then
+            echo "❌ Windsurf rules not generated"
+            exit 1
+          fi
+          
+          if [ ! -d "test-output/.github" ]; then
+            echo "❌ Copilot instructions not generated"
+            exit 1
+          fi
+          
+          echo "✅ All IDE formats generated successfully"
+
+      - name: Check skills/ directory is up-to-date
+        run: |
+          echo "Checking if committed skills/ directory is up-to-date..."
+          
+          # Save current skills
+          mv skills skills-committed
+          
+          # Regenerate skills (core rules only, matching default)
+          uv run python src/convert_to_ide_formats.py
+          
+          # Compare
+          if ! diff -r skills/ skills-committed/ > /dev/null 2>&1; then
+            echo "❌ The skills/ directory is out of date!"
+            echo "Please regenerate by running: python src/convert_to_ide_formats.py"
+            echo "Then: git add skills/"
+            mv skills-committed skills
+            exit 1
+          fi
+          
+          # Restore original
+          rm -rf skills
+          mv skills-committed skills
+          echo "✅ Committed skills/ directory is up-to-date"
+
+      - name: Summary
+        if: success()
+        run: |
+          echo "✅ All validation checks passed!"
+          echo ""
+          echo "Rule validation: ✅"
+          echo "Required files: ✅"
+          echo "IDE conversion: ✅"
+          echo "Skills directory: ✅"
+
