@@ -67,7 +67,7 @@ def update_skill_md(language_to_rules: dict[str, list[str]], skill_path: str) ->
 
     if start_marker not in content or end_marker not in content:
         raise RuntimeError(
-            "Invalid SKILLS.md template: Language mappings section not found in SKILL.md"
+            "Invalid template: Language mappings section not found in codeguard-SKILLS.md.template"
         )
 
     # Replace entire section including markers with just the table
