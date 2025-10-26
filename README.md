@@ -53,10 +53,32 @@ Get started in minutes:
 
 ## How It Works
 
-1. **Security rules** are written in a unified markdown format
-2. **Conversion tools** translate rules to IDE and AI agent formats
-3. **AI assistants** reference these rules when generating or reviewing code
-4. **Secure code** is produced automatically without developer intervention
+1. **Security rules** are written in unified markdown format (`sources/` directory)
+2. **Conversion tools** translate rules to IDE-specific formats (Cursor, Windsurf, Copilot, Claude Code)
+3. **Release automation** packages rules into downloadable ZIP files
+4. **AI assistants** reference these rules when generating or reviewing code
+5. **Secure code** is produced automatically without developer intervention
+
+## Repository Structure
+
+```
+sources/           # Source rules
+skills/            # Claude Code plugin (generated, committed)
+src/               # Conversion and validation tools
+dist/              # Other IDE bundles (generated, not committed)
+```
+
+## For Developers
+
+```bash
+git clone https://github.com/project-codeguard/rules.git && cd rules
+uv sync
+python src/validate_unified_rules.py sources/  # Validate rules
+python src/convert_to_ide_formats.py  # Generate skills/ and dist/
+```
+
+**More options**: `python src/convert_to_ide_formats.py --help`  
+**Maintainers**: See [CONTRIBUTING.md](CONTRIBUTING.md) for release process.
 
 ## Community
 

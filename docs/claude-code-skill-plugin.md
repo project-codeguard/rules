@@ -283,13 +283,17 @@ If you're contributing to Project CodeGuard or need to rebuild the plugin:
 
 ```bash
 cd /path/to/project-codeguard/rules
-./src/prepare-claude-code-plugin.sh
+
+# Regenerate the Claude Code plugin (always uses core rules only)
+uv run python src/convert_to_ide_formats.py
 ```
 
-This script:
-- Copies all rule files from `rules/` to `skills/software-security/rules/`
-- Verifies the plugin structure
-- Prepares the plugin for distribution or local testing
+This command:
+- Converts unified rules from `sources/` to IDE-specific formats
+- Generates `skills/` directory with the 22 core security rules (Claude Code plugin)
+- Creates `dist/` with IDE-specific formats (Cursor, Windsurf, Copilot)
+
+**Note:** The Claude Code plugin (`skills/`) always contains only the 22 curated core rules. To build bundles with OWASP supplementary rules for other IDEs, use `--source core owasp`, but this only affects `dist/`, not `skills/`.
 
 ## Advanced Usage
 
@@ -333,15 +337,22 @@ project-codeguard/rules/
 │   ├── plugin.json                  # Plugin metadata
 │   └── marketplace.json             # Marketplace catalog
 │
-├── skills/
+├── sources/                         # Source rules (version controlled)
+│   ├── core/                        # Core security rules
+│   └── owasp/                       # OWASP supplementary rules
+│
+├── skills/                          # Claude Code plugin (version controlled)
 │   └── software-security/
-│       ├── SKILL.md                 # Skill definition and workflow
-│       └── rules/                   # All 22 CodeGuard security rules
-│           ├── codeguard-1-*.md     # 4 always-apply rules
-│           └── codeguard-0-*.md     # 18 context-specific rules
+│       ├── SKILL.md                 # Generated skill file
+│       └── rules/                   # Generated rule files
+│
+├── dist/                            # Release artifacts (not in git)
+│   ├── .cursor/                     # Cursor IDE format
+│   ├── .windsurf/                   # Windsurf IDE format
+│   └── .github/                     # Copilot format
 │
 └── src/
-    └── prepare-claude-code-plugin.sh  # Build script
+    └── convert_to_ide_formats.py    # Conversion script
 ```
 
 ### How Claude Uses the Skill

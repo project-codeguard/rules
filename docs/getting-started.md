@@ -28,12 +28,17 @@ Before you begin, familiarize yourself with how rules work in your IDE:
 
 ### Option 1: Download Pre-built Rules (Recommended)
 
-1. **Download**: Visit the [Releases page](https://github.com/project-codeguard/rules/releases) and download the latest release archive
+1. **Download**: Visit the [Releases page](https://github.com/project-codeguard/rules/releases) and download the IDE-specific ZIP file:
+    - `ide-rules-all.zip` - All IDE formats (recommended for teams using multiple tools)
+    - `ide-rules-cursor.zip` - Cursor only
+    - `ide-rules-windsurf.zip` - Windsurf only
+    - `ide-rules-copilot.zip` - GitHub Copilot only
 2. **Extract**: Unzip the downloaded file
 3. **Install**: Copy the relevant IDE-specific rules to your project root:
-    - For **Cursor**: Copy `.cursor/` directory
-    - For **Windsurf**: Copy `.windsurf/` directory
-    - For **GitHub Copilot**: Copy `.github/instructions/` directory
+    - For **Cursor**: Copy `.cursor/` directory to your project
+    - For **Windsurf**: Copy `.windsurf/` directory to your project
+    - For **GitHub Copilot**: Copy `.github/` directory to your project
+
 
 !!! tip "Repository Level Installation"
     Installing at the repository level ensures all team members benefit from the security rules automatically when they clone the repository.
@@ -43,6 +48,20 @@ Before you begin, familiarize yourself with how rules work in your IDE:
     
     - **macOS Finder**: Press ++cmd+shift+period++ to toggle visibility
     - **Linux**: Use `ls -la` in terminal or enable "Show Hidden Files" in your file manager
+
+### Claude Code Plugin
+
+Claude Code uses a plugin system instead of manual file installation:
+
+```bash
+# Add the Project CodeGuard marketplace
+/plugin marketplace add project-codeguard/rules
+
+# Install the security plugin
+/plugin install codeguard-security@project-codeguard
+```
+
+The plugin will be automatically loaded and apply security rules to your code. See the [Claude Code Plugin documentation](claude-code-skill-plugin.md) for more details.
 
 ### Option 2: Build from Source
 
@@ -56,13 +75,19 @@ cd rules
 # Install dependencies (requires Python 3.11+)
 uv sync
 
-# Convert unified rules to IDE-specific formats
-uv run python src/unified_to_all.py rules/ .
+# Validate rules
+uv run python src/validate_unified_rules.py sources/
+
+# Convert rules (default: core rules only)
+uv run python src/convert_to_ide_formats.py
+
+# Or include all rules (core + owasp supplementary)
+uv run python src/convert_to_ide_formats.py --source core owasp
 
 # Copy the generated rules to your project
-cp -r ./ide_rules/.cursor/ /path/to/your/project/
-cp -r ./ide_rules/.windsurf/ /path/to/your/project/
-cp -r ./ide_rules/.github/ /path/to/your/project/
+cp -r dist/.cursor/ /path/to/your/project/
+cp -r dist/.windsurf/ /path/to/your/project/
+cp -r dist/.github/ /path/to/your/project/
 ```
 
 ## Verify Installation

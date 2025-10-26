@@ -29,9 +29,9 @@ This FAQ document provides clear, concise answers to help developers seamlessly 
 **A:** No. The always-on rules are designed to be lightweight and efficient, and should not consume a lot of the AI agent's context window. The "glob" rules are designed to be applied only to the related file types specified in the rule.
 
 ---
-## Q: What is the `additional_rules` folder?
+## Q: What are the OWASP supplementary rules?
 
-**A:** The `additional_rules` folder contains rules that can be used to supplement the Project CodeGuard core rules. These rules are not always-on and are not included in the downloaded release. They are only available in the `project-codeguard/rules` repository for code review and security assessments post-code generation.
+**A:** The `sources/owasp/` folder contains supplementary rules based on OWASP cheat sheets. These rules supplement the core security rules and can be optionally included when building from source. By default, only core rules (22 files) are included in standard builds.
 
 ---
 
@@ -49,13 +49,13 @@ This FAQ document provides clear, concise answers to help developers seamlessly 
 
 === "macOS"
     
-    In Finder, navigate to the extracted `ide_rules/` folder and press ++cmd+shift+period++ to toggle the visibility of hidden files. You should now see the `.cursor/`, `.windsurf/`, and `.github/` directories.
+    In Finder, navigate to the extracted folder and press ++cmd+shift+period++ to toggle the visibility of hidden files. You should now see the `.cursor/`, `.windsurf/`, and `.github/` directories.
 
 === "Windows"
     
     In File Explorer:
     
-    1. Navigate to the extracted `ide_rules/` folder
+    1. Navigate to the extracted folder
     2. Click on the **View** tab in the ribbon
     3. Check the **Hidden items** checkbox
 

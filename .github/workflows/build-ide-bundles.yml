@@ -1,0 +1,71 @@
+---
+name: Build and Release IDE Bundles
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Get version from release
+        id: get_version
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          VERSION=${TAG#v}
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Release version: $VERSION (tag: $TAG)"
+
+      - name: Validate rules
+        run: uv run python src/validate_unified_rules.py sources/
+
+      - name: Validate versions match tag
+        run: uv run python src/validate_versions.py ${{ steps.get_version.outputs.version }}
+
+      - name: Generate IDE bundles
+        run: uv run python src/convert_to_ide_formats.py
+
+      - name: Create release archives
+        run: |
+          cd dist
+          zip -r ../ide-rules-cursor.zip .cursor/
+          zip -r ../ide-rules-windsurf.zip .windsurf/
+          zip -r ../ide-rules-copilot.zip .github/
+          cd ..
+          zip -r ide-rules-all.zip dist/
+          ls -lh ide-rules-*.zip
+
+      - name: Upload release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ steps.get_version.outputs.tag }}" \
+            ide-rules-all.zip \
+            ide-rules-cursor.zip \
+            ide-rules-windsurf.zip \
+            ide-rules-copilot.zip \
+            --clobber
+

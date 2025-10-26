@@ -163,3 +163,6 @@ AGENTS.md
 # Claude Code Plugin
 .claude-plugin/.cache
 .claude/settings.local.json
+
+# Generated IDE-specific rule bundles (not committed, built for releases)
+dist/

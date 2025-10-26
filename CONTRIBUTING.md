@@ -56,6 +56,13 @@ The following types of changes are not covered by the two-stage content update p
 
 These excluded change types may follow direct-to-`main` workflows as determined by repository maintainers and policies.
 
+## Repository Structure
+
+- **`sources/`** - Source rules (edit these: `core/` has 22 files, `owasp/` has 88)
+- **`src/`** - Conversion and validation tools
+- **`skills/`** - Claude Code plugin (generated, committed)
+- **`dist/`** - Other IDE bundles (generated, not committed)
+
 ## First-time contributors
 
 If you are new to the project and looking for an entry point, check the open issues. Issues tagged `good first issue` are meant to be small, well-scoped tasks suitable for first-time contributors. If you find one you’d like to work on, comment on the issue and/or assign yourself, and a maintainer can confirm assignment.
@@ -126,8 +133,67 @@ Maintainers aim to review pull requests and issues within 3 business days.
 Write commit messages that clearly explain the change by continuing the sentence “This commit …”.
 
 Examples of good commit messages:
-- “This commit renames the examples folder to reference-implementations.”
-- “This commit bumps dependency versions to address security advisories.”
+- "This commit renames the examples folder to reference-implementations."
+- "This commit bumps dependency versions to address security advisories."
+
+## Release Process (Maintainers)
+
+### Step 1: Update Version
+
+```bash
+# Edit pyproject.toml and update the version number
+vi pyproject.toml  # Change version = "1.2.3"
+
+# Regenerate all IDE bundles (auto-syncs version to JSON files)
+uv run python src/convert_to_ide_formats.py
+
+# Review changes
+git diff
+
+# Commit changes
+git add -A
+git commit -m "Bump version to 1.2.3"
+
+# Push to main (via PR or direct)
+git push origin main
+```
+
+**Note**: The conversion script automatically syncs the version from `pyproject.toml` to:
+- `.claude-plugin/plugin.json` and `marketplace.json` (Claude Code plugin metadata)
+- All generated IDE rule files (Cursor `.mdc`, Windsurf `.md`, Copilot `.instructions.md`, Claude Code `.md`)
+
+This ensures version consistency across all artifacts.
+
+### Step 2: Create Release (GitHub UI)
+
+1. Go to: https://github.com/project-codeguard/rules/releases/new
+2. **Tag**: Enter `vX.Y.Z` (must match version in pyproject.toml)
+3. **Title**: `Project CodeGuard vX.Y.Z`
+4. Click **"Generate release notes"** (auto-generates changelog)
+5. Click **"Publish release"**
+
+GitHub Actions will automatically:
+- ✅ Validate versions match the tag
+- ✅ Build IDE bundles (Cursor, Windsurf, Copilot)
+- ✅ Upload ZIP artifacts to the release
+
+## Testing Your Changes
+
+```bash
+# Validate rules (required if you modified rules)
+python src/validate_unified_rules.py sources/
+
+# Regenerate skills/ (required if you modified rules)
+python src/convert_to_ide_formats.py
+git add skills/  # skills/ is version-controlled
+
+# Test with all sources (core + owasp)
+python src/convert_to_ide_formats.py --source core owasp -o test-output/
+# Check: test-output/.cursor/, test-output/.windsurf/, etc.
+
+# Get help
+python src/convert_to_ide_formats.py --help
+```
 
 ## Feedback
 
