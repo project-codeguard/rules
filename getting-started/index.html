@@ -362,6 +362,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#claude-code-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claude Code Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#option-2-build-from-source" class="md-nav__link">
     <span class="md-ellipsis">
       Option 2: Build from Source
@@ -571,6 +580,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#claude-code-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claude Code Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#option-2-build-from-source" class="md-nav__link">
     <span class="md-ellipsis">
       Option 2: Build from Source
@@ -737,12 +755,18 @@
 <h2 id="installation">Installation</h2>
 <h3 id="option-1-download-pre-built-rules-recommended">Option 1: Download Pre-built Rules (Recommended)</h3>
 <ol>
-<li><strong>Download</strong>: Visit the <a href="https://github.com/project-codeguard/rules/releases">Releases page</a> and download the latest release archive</li>
+<li><strong>Download</strong>: Visit the <a href="https://github.com/project-codeguard/rules/releases">Releases page</a> and download the IDE-specific ZIP file:<ul>
+<li><code>ide-rules-all.zip</code> - All IDE formats (recommended for teams using multiple tools)</li>
+<li><code>ide-rules-cursor.zip</code> - Cursor only</li>
+<li><code>ide-rules-windsurf.zip</code> - Windsurf only</li>
+<li><code>ide-rules-copilot.zip</code> - GitHub Copilot only</li>
+</ul>
+</li>
 <li><strong>Extract</strong>: Unzip the downloaded file</li>
 <li><strong>Install</strong>: Copy the relevant IDE-specific rules to your project root:<ul>
-<li>For <strong>Cursor</strong>: Copy <code>.cursor/</code> directory</li>
-<li>For <strong>Windsurf</strong>: Copy <code>.windsurf/</code> directory</li>
-<li>For <strong>GitHub Copilot</strong>: Copy <code>.github/instructions/</code> directory</li>
+<li>For <strong>Cursor</strong>: Copy <code>.cursor/</code> directory to your project</li>
+<li>For <strong>Windsurf</strong>: Copy <code>.windsurf/</code> directory to your project</li>
+<li>For <strong>GitHub Copilot</strong>: Copy <code>.github/</code> directory to your project</li>
 </ul>
 </li>
 </ol>
@@ -758,6 +782,15 @@
 <li><strong>Linux</strong>: Use <code>ls -la</code> in terminal or enable "Show Hidden Files" in your file manager</li>
 </ul>
 </div>
+<h3 id="claude-code-plugin">Claude Code Plugin</h3>
+<p>Claude Code uses a plugin system instead of manual file installation:</p>
+<pre><code class="language-bash"># Add the Project CodeGuard marketplace
+/plugin marketplace add project-codeguard/rules
+
+# Install the security plugin
+/plugin install codeguard-security@project-codeguard
+</code></pre>
+<p>The plugin will be automatically loaded and apply security rules to your code. See the <a href="../claude-code-skill-plugin/">Claude Code Plugin documentation</a> for more details.</p>
 <h3 id="option-2-build-from-source">Option 2: Build from Source</h3>
 <p>If you want to customize or contribute to the rules:</p>
 <pre><code class="language-bash"># Clone the repository
@@ -767,13 +800,19 @@ cd rules
 # Install dependencies (requires Python 3.11+)
 uv sync
 
-# Convert unified rules to IDE-specific formats
-uv run python src/unified_to_all.py rules/ .
+# Validate rules
+uv run python src/validate_unified_rules.py sources/
+
+# Convert rules (default: core rules only)
+uv run python src/convert_to_ide_formats.py
+
+# Or include all rules (core + owasp supplementary)
+uv run python src/convert_to_ide_formats.py --source core owasp
 
 # Copy the generated rules to your project
-cp -r ./ide_rules/.cursor/ /path/to/your/project/
-cp -r ./ide_rules/.windsurf/ /path/to/your/project/
-cp -r ./ide_rules/.github/ /path/to/your/project/
+cp -r dist/.cursor/ /path/to/your/project/
+cp -r dist/.windsurf/ /path/to/your/project/
+cp -r dist/.github/ /path/to/your/project/
 </code></pre>
 <h2 id="verify-installation">Verify Installation</h2>
 <p>After installation, your project structure should include:</p>
