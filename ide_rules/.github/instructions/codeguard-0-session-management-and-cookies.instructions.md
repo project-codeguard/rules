@@ -1,7 +1,6 @@
 ---
 applyTo: '**/*.c,**/*.go,**/*.h,**/*.htm,**/*.html,**/*.java,**/*.js,**/*.jsx,**/*.mjs,**/*.php,**/*.py,**/*.pyi,**/*.pyx,**/*.rb,**/*.ts,**/*.tsx'
-title: Session management and secure cookies (rotation, fixation, timeouts, theft
-  detection)
+description: Session management and secure cookies (rotation, fixation, timeouts, theft detection)
 version: 1.0.0
 ---
 

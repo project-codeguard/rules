@@ -1,8 +1,7 @@
 ---
 trigger: glob
 globs: **/*.c,**/*.go,**/*.h,**/*.java,**/*.js,**/*.jsx,**/*.mjs,**/*.php,**/*.py,**/*.pyi,**/*.pyx,**/*.rb,**/*.ts,**/*.tsx,**/*.yaml,**/*.yml
-title: Authorization and access control (RBAC/ABAC/ReBAC, IDOR, mass assignment, transaction
-  auth)
+title: Authorization and access control (RBAC/ABAC/ReBAC, IDOR, mass assignment, transaction auth)
 version: 1.0.0
 ---
 

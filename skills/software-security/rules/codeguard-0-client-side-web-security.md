@@ -1,6 +1,5 @@
 ---
-description: Client-side web security (XSS/DOM XSS, CSP, CSRF, clickjacking, XS-Leaks,
-  third-party JS)
+description: Client-side web security (XSS/DOM XSS, CSP, CSRF, clickjacking, XS-Leaks, third-party JS)
 languages:
 - c
 - html

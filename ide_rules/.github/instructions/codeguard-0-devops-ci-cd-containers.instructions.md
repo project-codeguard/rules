@@ -1,7 +1,6 @@
 ---
 applyTo: '**/*.bash,**/*.dockerfile,**/*.js,**/*.jsx,**/*.mjs,**/*.ps1,**/*.sh,**/*.wsdl,**/*.xml,**/*.xsd,**/*.xslt,**/*.yaml,**/*.yml,Dockerfile*,docker-compose*'
-title: DevOps, CI/CD, and containers (pipeline hardening, artifacts, Docker/K8s images,
-  virtual patching, toolchain)
+description: DevOps, CI/CD, and containers (pipeline hardening, artifacts, Docker/K8s images, virtual patching, toolchain)
 version: 1.0.0
 ---
 

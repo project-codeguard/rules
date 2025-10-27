@@ -1,7 +1,6 @@
 ---
 applyTo: '**/*.c,**/*.ddl,**/*.dml,**/*.h,**/*.js,**/*.jsx,**/*.mjs,**/*.sql,**/*.yaml,**/*.yml'
-title: Data & storage security (DB isolation, TLS, least privilege, RLS/CLS, backups,
-  auditing)
+description: Data & storage security (DB isolation, TLS, least privilege, RLS/CLS, backups, auditing)
 version: 1.0.0
 ---
 

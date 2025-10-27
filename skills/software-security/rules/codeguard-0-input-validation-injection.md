@@ -1,6 +1,5 @@
 ---
-description: Input validation and injection defense (SQL/LDAP/OS), parameterization,
-  prototype pollution
+description: Input validation and injection defense (SQL/LDAP/OS), parameterization, prototype pollution
 languages:
 - c
 - go

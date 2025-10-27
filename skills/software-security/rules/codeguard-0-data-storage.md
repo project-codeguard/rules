@@ -1,6 +1,5 @@
 ---
-description: Data & storage security (DB isolation, TLS, least privilege, RLS/CLS,
-  backups, auditing)
+description: Data & storage security (DB isolation, TLS, least privilege, RLS/CLS, backups, auditing)
 languages:
 - c
 - javascript

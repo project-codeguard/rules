@@ -1,8 +1,7 @@
 ---
 trigger: glob
 globs: **/*.bash,**/*.c,**/*.ddl,**/*.dml,**/*.go,**/*.h,**/*.htm,**/*.html,**/*.java,**/*.js,**/*.jsx,**/*.mjs,**/*.php,**/*.ps1,**/*.py,**/*.pyi,**/*.pyx,**/*.rb,**/*.sh,**/*.sql,**/*.ts,**/*.tsx
-title: Input validation and injection defense (SQL/LDAP/OS), parameterization, prototype
-  pollution
+title: Input validation and injection defense (SQL/LDAP/OS), parameterization, prototype pollution
 version: 1.0.0
 ---
 

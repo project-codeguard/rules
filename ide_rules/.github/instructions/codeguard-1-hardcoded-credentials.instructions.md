@@ -1,6 +1,6 @@
 ---
 applyTo: '**/*'
-title: No Hardcoded Credentials
+description: No Hardcoded Credentials
 version: 1.0.0
 ---
 

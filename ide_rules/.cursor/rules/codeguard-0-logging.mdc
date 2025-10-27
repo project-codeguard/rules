@@ -1,6 +1,5 @@
 ---
-description: Logging & monitoring (structured telemetry, redaction, integrity, detection
-  & alerting)
+description: Logging & monitoring (structured telemetry, redaction, integrity, detection & alerting)
 globs: **/*.c,**/*.h,**/*.js,**/*.jsx,**/*.mjs,**/*.yaml,**/*.yml
 version: 1.0.0
 ---

@@ -1,6 +1,5 @@
 ---
-description: Kubernetes hardening (RBAC, admission policies, network policies, secrets,
-  supply chain)
+description: Kubernetes hardening (RBAC, admission policies, network policies, secrets, supply chain)
 globs: **/*.js,**/*.jsx,**/*.mjs,**/*.yaml,**/*.yml
 version: 1.0.0
 ---

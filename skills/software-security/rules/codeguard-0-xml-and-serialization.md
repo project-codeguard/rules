@@ -1,6 +1,5 @@
 ---
-description: XML security and safe deserialization (DTD/XXE hardening, schema validation,
-  no unsafe native deserialization)
+description: XML security and safe deserialization (DTD/XXE hardening, schema validation, no unsafe native deserialization)
 languages:
 - c
 - go

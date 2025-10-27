@@ -1,6 +1,6 @@
 ---
 applyTo: '**/*'
-title: Certificate Best Practices
+description: Certificate Best Practices
 version: 1.0.0
 ---
 

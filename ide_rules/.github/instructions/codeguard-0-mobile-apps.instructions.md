@@ -1,7 +1,6 @@
 ---
 applyTo: '**/*.java,**/*.js,**/*.jsx,**/*.kt,**/*.kts,**/*.m,**/*.mjs,**/*.pl,**/*.pm,**/*.swift,**/*.wsdl,**/*.xml,**/*.xsd,**/*.xslt'
-title: 'Mobile app security (iOS/Android): storage, transport, code integrity, biometrics,
-  permissions'
+description: 'Mobile app security (iOS/Android): storage, transport, code integrity, biometrics, permissions'
 version: 1.0.0
 ---
 

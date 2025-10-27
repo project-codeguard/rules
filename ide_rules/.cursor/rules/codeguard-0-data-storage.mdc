@@ -1,6 +1,5 @@
 ---
-description: Data & storage security (DB isolation, TLS, least privilege, RLS/CLS,
-  backups, auditing)
+description: Data & storage security (DB isolation, TLS, least privilege, RLS/CLS, backups, auditing)
 globs: **/*.c,**/*.ddl,**/*.dml,**/*.h,**/*.js,**/*.jsx,**/*.mjs,**/*.sql,**/*.yaml,**/*.yml
 version: 1.0.0
 ---

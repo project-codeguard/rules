@@ -1,6 +1,5 @@
 ---
-description: Privacy & data protection (minimization, classification, encryption,
-  rights, transparency)
+description: Privacy & data protection (minimization, classification, encryption, rights, transparency)
 globs: **/*.js,**/*.jsx,**/*.m,**/*.mjs,**/*.yaml,**/*.yml
 version: 1.0.0
 ---

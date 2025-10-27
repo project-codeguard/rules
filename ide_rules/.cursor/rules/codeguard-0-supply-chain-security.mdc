@@ -1,6 +1,5 @@
 ---
-description: Dependency & supply chain security (pinning, SBOM, provenance, integrity,
-  private registries)
+description: Dependency & supply chain security (pinning, SBOM, provenance, integrity, private registries)
 globs: **/*.dockerfile,**/*.js,**/*.jsx,**/*.mjs,**/*.yaml,**/*.yml,Dockerfile*,docker-compose*
 version: 1.0.0
 ---

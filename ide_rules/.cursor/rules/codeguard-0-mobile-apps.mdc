@@ -1,6 +1,5 @@
 ---
-description: 'Mobile app security (iOS/Android): storage, transport, code integrity,
-  biometrics, permissions'
+description: 'Mobile app security (iOS/Android): storage, transport, code integrity, biometrics, permissions'
 globs: **/*.java,**/*.js,**/*.jsx,**/*.kt,**/*.kts,**/*.m,**/*.mjs,**/*.pl,**/*.pm,**/*.swift,**/*.wsdl,**/*.xml,**/*.xsd,**/*.xslt
 version: 1.0.0
 ---

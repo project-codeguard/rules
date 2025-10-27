@@ -51,7 +51,6 @@ class CopilotFormat(BaseFormat):
 
         # Add description
         description = self._format_yaml_field("description", rule.description)
-        description = description.replace('\n', '')
         if description:
             yaml_lines.append(description)
 

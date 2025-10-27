@@ -1,8 +1,7 @@
 ---
 trigger: glob
 globs: **/*.dockerfile,**/*.js,**/*.jsx,**/*.mjs,**/*.yaml,**/*.yml,Dockerfile*,docker-compose*
-title: Dependency & supply chain security (pinning, SBOM, provenance, integrity, private
-  registries)
+title: Dependency & supply chain security (pinning, SBOM, provenance, integrity, private registries)
 version: 1.0.0
 ---
 
