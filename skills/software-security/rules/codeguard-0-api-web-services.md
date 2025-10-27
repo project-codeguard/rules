@@ -1,6 +1,5 @@
 ---
-description: API & Web services security (REST/GraphQL/SOAP), schema validation, authn/z,
-  SSRF
+description: API & Web services security (REST/GraphQL/SOAP), schema validation, authn/z, SSRF
 languages:
 - c
 - go

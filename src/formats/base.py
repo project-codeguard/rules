@@ -128,6 +128,7 @@ class BaseFormat(ABC):
                 {field_name: value},
                 default_flow_style=False,
                 allow_unicode=True,
+                width=float("inf")
             )
             return yaml_dump.strip()
         return ""

@@ -1,6 +1,5 @@
 ---
-description: Session management and secure cookies (rotation, fixation, timeouts,
-  theft detection)
+description: Session management and secure cookies (rotation, fixation, timeouts, theft detection)
 languages:
 - c
 - go

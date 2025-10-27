@@ -1,6 +1,5 @@
 ---
-description: 'Mobile app security (iOS/Android): storage, transport, code integrity,
-  biometrics, permissions'
+description: 'Mobile app security (iOS/Android): storage, transport, code integrity, biometrics, permissions'
 languages:
 - java
 - javascript

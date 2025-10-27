@@ -1,6 +1,5 @@
 ---
-description: Dependency & supply chain security (pinning, SBOM, provenance, integrity,
-  private registries)
+description: Dependency & supply chain security (pinning, SBOM, provenance, integrity, private registries)
 languages:
 - docker
 - javascript

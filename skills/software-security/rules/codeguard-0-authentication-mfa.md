@@ -1,6 +1,5 @@
 ---
-description: Authentication and MFA best practices (passwords, MFA, OAuth/OIDC, SAML,
-  recovery, tokens)
+description: Authentication and MFA best practices (passwords, MFA, OAuth/OIDC, SAML, recovery, tokens)
 languages:
 - c
 - go

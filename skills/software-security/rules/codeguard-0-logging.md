@@ -1,6 +1,5 @@
 ---
-description: Logging & monitoring (structured telemetry, redaction, integrity, detection
-  & alerting)
+description: Logging & monitoring (structured telemetry, redaction, integrity, detection & alerting)
 languages:
 - c
 - javascript

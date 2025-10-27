@@ -1,6 +1,5 @@
 ---
-description: Framework & language security guides (Django/DRF, Laravel/Symfony/Rails,
-  .NET, Java/JAAS, Node.js, PHP config)
+description: Framework & language security guides (Django/DRF, Laravel/Symfony/Rails, .NET, Java/JAAS, Node.js, PHP config)
 languages:
 - c
 - java
