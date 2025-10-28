@@ -1,6 +1,5 @@
 ---
-description: Authorization and access control (RBAC/ABAC/ReBAC, IDOR, mass assignment,
-  transaction auth)
+description: Authorization and access control (RBAC/ABAC/ReBAC, IDOR, mass assignment, transaction auth)
 languages:
 - c
 - go

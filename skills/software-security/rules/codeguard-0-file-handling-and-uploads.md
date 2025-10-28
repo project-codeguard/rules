@@ -1,6 +1,5 @@
 ---
-description: Secure file handling & uploads (validation, storage isolation, scanning,
-  safe delivery)
+description: Secure file handling & uploads (validation, storage isolation, scanning, safe delivery)
 languages:
 - c
 - go

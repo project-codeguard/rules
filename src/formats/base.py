@@ -124,10 +124,11 @@ class BaseFormat(ABC):
             Properly formatted YAML string, or empty string if value is empty
         """
         if value and value.strip():
-            yaml_dump = yaml.dump(
+            yaml_dump = yaml.safe_dump(
                 {field_name: value},
                 default_flow_style=False,
                 allow_unicode=True,
+                width=float("inf")
             )
             return yaml_dump.strip()
         return ""

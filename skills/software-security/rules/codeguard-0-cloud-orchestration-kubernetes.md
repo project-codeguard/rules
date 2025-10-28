@@ -1,6 +1,5 @@
 ---
-description: Kubernetes hardening (RBAC, admission policies, network policies, secrets,
-  supply chain)
+description: Kubernetes hardening (RBAC, admission policies, network policies, secrets, supply chain)
 languages:
 - javascript
 - yaml

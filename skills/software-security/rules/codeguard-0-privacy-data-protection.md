@@ -1,6 +1,5 @@
 ---
-description: Privacy & data protection (minimization, classification, encryption,
-  rights, transparency)
+description: Privacy & data protection (minimization, classification, encryption, rights, transparency)
 languages:
 - javascript
 - matlab

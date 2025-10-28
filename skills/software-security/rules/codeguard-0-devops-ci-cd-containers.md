@@ -1,6 +1,5 @@
 ---
-description: DevOps, CI/CD, and containers (pipeline hardening, artifacts, Docker/K8s
-  images, virtual patching, toolchain)
+description: DevOps, CI/CD, and containers (pipeline hardening, artifacts, Docker/K8s images, virtual patching, toolchain)
 languages:
 - docker
 - javascript
