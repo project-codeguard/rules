@@ -507,18 +507,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#always-apply-rules-4-rules" class="md-nav__link">
+  <a href="#always-apply-rules-3-rules" class="md-nav__link">
     <span class="md-ellipsis">
-      Always-Apply Rules (4 rules)
+      Always-Apply Rules (3 rules)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#context-specific-rules-18-rules" class="md-nav__link">
+  <a href="#context-specific-rules-19-rules" class="md-nav__link">
     <span class="md-ellipsis">
-      Context-Specific Rules (18 rules)
+      Context-Specific Rules (19 rules)
     </span>
   </a>
   
@@ -768,6 +768,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#version-101" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.0.1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#version-100" class="md-nav__link">
     <span class="md-ellipsis">
       Version 1.0.0
@@ -885,13 +894,12 @@
 - Explain which security rules were applied
 - Highlight security features implemented</p>
 <h3 id="rule-categories">Rule Categories</h3>
-<p><strong>Always-Apply Rules</strong> (4 critical rules checked on every code operation):
+<p><strong>Always-Apply Rules</strong> (3 critical rules checked on every code operation):
 - <code>codeguard-1-hardcoded-credentials</code> - Never hardcode secrets or credentials
 - <code>codeguard-1-crypto-algorithms</code> - Use modern cryptographic algorithms
-- <code>codeguard-1-digital-certificates</code> - Validate certificate security
-- <code>codeguard-1-safe-c-functions</code> - Replace unsafe C/C++ functions</p>
-<p><strong>Context-Specific Rules</strong> (18 rules applied based on technology and features):
-- Input validation, authentication, authorization, APIs, data storage, privacy, logging, cryptography, file handling, serialization, supply chain, DevOps, cloud, Kubernetes, IaC, frameworks, and mobile security</p>
+- <code>codeguard-1-digital-certificates</code> - Validate certificate security</p>
+<p><strong>Context-Specific Rules</strong> (19 rules applied based on technology and features):
+- Input validation, authentication, authorization, APIs, data storage, privacy, logging, cryptography, file handling, serialization, supply chain, DevOps, cloud, Kubernetes, IaC, frameworks, mobile security, and memory safety (C/C++)</p>
 <h2 id="usage-examples">Usage Examples</h2>
 <h3 id="example-1-writing-database-code">Example 1: Writing Database Code</h3>
 <pre><code class="language-python"># Claude will automatically use parameterized queries
@@ -955,7 +963,7 @@ const upload = multer({
 </ol>
 <h2 id="all-security-rules">All Security Rules</h2>
 <p>The plugin includes 22 comprehensive security rules organized into two categories:</p>
-<h3 id="always-apply-rules-4-rules">Always-Apply Rules (4 rules)</h3>
+<h3 id="always-apply-rules-3-rules">Always-Apply Rules (3 rules)</h3>
 <p>These critical rules are checked on <strong>every</strong> code operation:</p>
 <table>
 <thead>
@@ -977,13 +985,9 @@ const upload = multer({
 <td><code>codeguard-1-digital-certificates</code></td>
 <td>Validate certificate expiration, key strength, signature algorithms</td>
 </tr>
-<tr>
-<td><code>codeguard-1-safe-c-functions</code></td>
-<td>Replace unsafe C/C++ functions (gets, strcpy, strcat, sprintf)</td>
-</tr>
 </tbody>
 </table>
-<h3 id="context-specific-rules-18-rules">Context-Specific Rules (18 rules)</h3>
+<h3 id="context-specific-rules-19-rules">Context-Specific Rules (19 rules)</h3>
 <p>These rules apply based on the programming language, framework, or feature being implemented. Claude automatically selects relevant rules based on context:</p>
 <table>
 <thead>
@@ -1032,6 +1036,10 @@ const upload = multer({
 <tr>
 <td><strong>Platforms</strong></td>
 <td><code>codeguard-0-framework-and-languages</code>, <code>codeguard-0-mobile-apps</code></td>
+</tr>
+<tr>
+<td><strong>Memory Safety (C/C++)</strong></td>
+<td><code>codeguard-0-safe-c-functions</code></td>
 </tr>
 </tbody>
 </table>
@@ -1186,6 +1194,12 @@ Use CodeGuard rules to guide the architecture.
 <li><strong>Contribute</strong>: <a href="https://github.com/project-codeguard/rules/blob/main/CONTRIBUTING.md">Contributing Guide</a></li>
 </ol>
 <h2 id="version-history">Version History</h2>
+<h3 id="version-101">Version 1.0.1</h3>
+<ul>
+<li>Changed <code>codeguard-1-safe-c-functions</code> from always-apply to <code>codeguard-0-safe-c-functions</code> context-specific rule (C/C++ only)</li>
+<li>Updated rule counts: 3 always-apply rules, 19 context-specific rules</li>
+<li>Fixed GitHub Copilot instructions to use <code>description</code> field instead of <code>title</code></li>
+</ul>
 <h3 id="version-100">Version 1.0.0</h3>
 <ul>
 <li>Initial release</li>
