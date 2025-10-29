@@ -24,7 +24,6 @@ When writing or reviewing code:
 - `codeguard-1-hardcoded-credentials.md` - Never hardcode secrets, passwords, API keys, or tokens
 - `codeguard-1-crypto-algorithms.md` - Use only modern, secure cryptographic algorithms
 - `codeguard-1-digital-certificates.md` - Validate and manage digital certificates securely
-- `codeguard-1-safe-c-functions.md` - Avoid unsafe C/C++ functions and use safe alternatives
 2. Context-Specific Rules: Apply rules from /rules directory based on the language of the feature being implemented using the table given below:
 <!-- LANGUAGE_MAPPINGS_START -->
 <!-- LANGUAGE_MAPPINGS_END -->
