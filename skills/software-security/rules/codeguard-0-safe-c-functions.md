@@ -1,8 +1,12 @@
 ---
 description: Safe C Functions and Memory and String Safety Guidelines
-languages: []
-alwaysApply: true
+languages:
+- c
+- cpp
+alwaysApply: false
 ---
+
+rule_id: codeguard-0-safe-c-functions
 
 # Prioritize Safe Memory and String Functions in C/C++
 
