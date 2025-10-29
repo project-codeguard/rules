@@ -1,7 +1,7 @@
 {
   "name": "codeguard-security",
   "description": "Security code review skill based on Project CodeGuard's comprehensive security rules. Helps AI coding agents write secure code and prevent common vulnerabilities.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Project CodeGuard",
     "url": "https://project-codeguard.org"
