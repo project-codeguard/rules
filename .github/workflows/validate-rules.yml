@@ -51,7 +51,6 @@ jobs:
             "sources/core/codeguard-1-hardcoded-credentials.md"
             "sources/core/codeguard-1-crypto-algorithms.md"
             "sources/core/codeguard-1-digital-certificates.md"
-            "sources/core/codeguard-1-safe-c-functions.md"
             "sources/core/codeguard-SKILLS.md.template"
           )
           
