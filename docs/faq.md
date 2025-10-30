@@ -110,6 +110,12 @@ See [CONTRIBUTING.md](https://github.com/project-codeguard/rules/blob/main/CONTR
 
 ---
 
+## Q: Does Project CodeGuard replace my security scanners?
+
+**A:** No, Project CodeGuard rules do not replace your security scanners. The primary purpose of CodeGuard is to help you avoid introducing new security vulnerabilities as you write code, by providing agentic rules and guidance directly in your IDE. If you perform a code review using these rules, Project CodeGuard will most likely identify many of the same vulnerabilities that security scanning tools would find. However, CodeGuard is not a comprehensive substitute for security scanners—automated security tools are designed to thoroughly analyze your entire codebase and catch a broader range of issues. For best results, use CodeGuard rules in combination with your existing security scanners to maximize your code’s security.
+
+---
+
 ## Still have questions?
 
 **Can't find your answer?** 
