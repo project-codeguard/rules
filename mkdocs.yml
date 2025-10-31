@@ -55,3 +55,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.tabbed:
       alternate_style: true
+      
+extra:
+  generator: false
+
