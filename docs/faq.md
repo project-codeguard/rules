@@ -86,17 +86,6 @@ We welcome all feedback - whether it's a bug report, success story, or enhanceme
 
 ---
 
-## Q: Why do I get the following error message in GitHub for some of the rules?
-
-```
-Error in user YAML: (<unknown>): did not find expected alphabetic 
-or numeric character while scanning an alias at line x column x
-```
-
-**A:** You can safely ignore this error. GitHub attempts to parse YAML headers combined with markdown content, which can cause this warning. It does not affect rule functionality - the rules will work correctly in your IDE regardless of this GitHub display issue.
-
----
-
 ## Q: How can I contribute to these rules and this project?
 
 **A:** You can contribute at any time by:
