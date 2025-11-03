@@ -29,8 +29,8 @@ This FAQ document provides clear, concise answers to help developers seamlessly 
 **A:** The always‑on rules are lightweight and have minimal impact on the AI agent’s context window. Glob‑scoped rules only apply to their matching file types. Below are Cursor examples: left, no rules; right, three always‑on rules enabled.
 
 <p align="center">
-  <img src="images/context-window-no-rules.png" alt="Cursor AI agent context window usage without Project CodeGuard rules" width="40%" style="display:inline-block; margin-right:2%;" />
-  <img src="images/context-window-with-rules.png" alt="Cursor AI agent context window usage with Project CodeGuard rules enabled" width="40%" style="display:inline-block;" />
+  <img src="../images/context-window-no-rules.png" alt="Cursor AI agent context window usage without Project CodeGuard rules" width="40%" style="display:inline-block; margin-right:2%;" />
+  <img src="../images/context-window-with-rules.png" alt="Cursor AI agent context window usage with Project CodeGuard rules enabled" width="40%" style="display:inline-block;" />
 </p>
 
 <center>
