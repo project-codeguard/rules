@@ -26,7 +26,20 @@ This FAQ document provides clear, concise answers to help developers seamlessly 
 ---
 ## Q: Will these rules consume a lot of the AI agent's **context window**?
 
-**A:** No. The always-on rules are designed to be lightweight and efficient, and should not consume a lot of the AI agent's context window. The "glob" rules are designed to be applied only to the related file types specified in the rule.
+**A:** The always‑on rules are lightweight and have minimal impact on the AI agent’s context window. Glob‑scoped rules only apply to their matching file types. Below are Cursor examples: left, no rules; right, three always‑on rules enabled.
+
+<p align="center">
+  <img src="images/context-window-no-rules.png" alt="Cursor AI agent context window usage without Project CodeGuard rules" width="40%" style="display:inline-block; margin-right:2%;" />
+  <img src="images/context-window-with-rules.png" alt="Cursor AI agent context window usage with Project CodeGuard rules enabled" width="40%" style="display:inline-block;" />
+</p>
+
+<center>
+  <sub>
+    <b>Left:</b> Context window usage without any rules in place.<br>
+    <b>Right:</b> Context window usage with three always-on rules enabled.
+  </sub>
+</center>
+
 
 ---
 ## Q: What are the OWASP supplementary rules?
