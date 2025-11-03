@@ -69,9 +69,14 @@ Once hidden files are visible, you can copy the appropriate directory (`.cursor/
 
 ## Q: Can I use this with Claude Code?
 
-**A:** Yes! Claude Code automatically reads and follows instructions from a `CLAUDE.md` file in your project root. To use Project CodeGuard rules with Claude Code you can point to the Project CodeGuard rules in your `CLAUDE.md` file.
+**A:** Yes! Install the Project CodeGuard Claude Code plugin (Agent Skill) and Claude will apply the security rules automatically while you code.
 
-When Claude Code operates in your project, it treats the Project CodeGuard security rules in `CLAUDE.md` as authoritative system instructions.
+```bash
+/plugin marketplace add project-codeguard/rules
+/plugin install codeguard-security@project-codeguard
+```
+
+For team/repo defaults, add the plugin in `.claude/settings.json` so it’s enabled for all contributors. See the [Claude Code Plugin documentation](claude-code-skill-plugin.md) for details and troubleshooting.
 
 
 ## Q: How can I report a problem or enhancement to any of the rules?
