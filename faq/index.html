@@ -673,8 +673,11 @@
 <p>Once hidden files are visible, you can copy the appropriate directory (<code>.cursor/</code>, <code>.windsurf/</code>, or <code>.github/</code>) to your project root.</p>
 <hr />
 <h2 id="q-can-i-use-this-with-claude-code">Q: Can I use this with Claude Code?</h2>
-<p><strong>A:</strong> Yes! Claude Code automatically reads and follows instructions from a <code>CLAUDE.md</code> file in your project root. To use Project CodeGuard rules with Claude Code you can point to the Project CodeGuard rules in your <code>CLAUDE.md</code> file.</p>
-<p>When Claude Code operates in your project, it treats the Project CodeGuard security rules in <code>CLAUDE.md</code> as authoritative system instructions.</p>
+<p><strong>A:</strong> Yes! Install the Project CodeGuard Claude Code plugin (Agent Skill) and Claude will apply the security rules automatically while you code.</p>
+<pre><code class="language-bash">/plugin marketplace add project-codeguard/rules
+/plugin install codeguard-security@project-codeguard
+</code></pre>
+<p>For team/repo defaults, add the plugin in <code>.claude/settings.json</code> so it’s enabled for all contributors. See the <a href="../claude-code-skill-plugin/">Claude Code Plugin documentation</a> for details and troubleshooting.</p>
 <h2 id="q-how-can-i-report-a-problem-or-enhancement-to-any-of-the-rules">Q: How can I report a problem or enhancement to any of the rules?</h2>
 <p><strong>A:</strong> You can report problems, successes, or suggest enhancements to any of the rules by:</p>
 <ol>
