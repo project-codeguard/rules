@@ -5,7 +5,9 @@ Get up and running with Project CodeGuard in just a few steps.
 ## Project CodeGuard Introduction Video
 [This video](https://www.youtube.com/watch?v=O03MDxUWjsE) introduces Project CodeGuard and includes several demos on how to use it during code generation and code review with Claude Code, Codex, and other coding agents.
 
-[![Project CodeGuard Introduction Video and Demos](http://img.youtube.com/vi/O03MDxUWjsE/0.jpg)](http://www.youtube.com/watch?v=O03MDxUWjsE "Project CodeGuard Introduction Video and Demos")
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; margin: 2em 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/O03MDxUWjsE" title="Project CodeGuard Introduction Video and Demos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 ## Prerequisites
 
