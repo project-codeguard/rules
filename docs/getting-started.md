@@ -2,6 +2,11 @@
 
 Get up and running with Project CodeGuard in just a few steps.
 
+## Project CodeGuard Introduction Video
+[This video](https://www.youtube.com/watch?v=O03MDxUWjsE) introduces Project CodeGuard and includes several demos on how to use it during code generation and code review with Claude Code, Codex, and other coding agents.
+
+[![Project CodeGuard Introduction Video and Demos](http://img.youtube.com/vi/O03MDxUWjsE/0.jpg)](http://www.youtube.com/watch?v=O03MDxUWjsE "Project CodeGuard Introduction Video and Demos")
+
 ## Prerequisites
 
 Before you begin, familiarize yourself with how rules work in your IDE:
