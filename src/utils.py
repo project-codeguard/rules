@@ -57,6 +57,41 @@ def parse_frontmatter_and_content(content: str) -> tuple[dict | None, str]:
     return frontmatter, markdown_content.strip()
 
 
+def validate_tags(tags, filename=None) -> list[str]:
+    """
+    Validate tags list and return normalized (lowercase) tags.
+    
+    Args:
+        tags: The tags value to validate (should be a list)
+        filename: Optional filename for better error messages
+    
+    Returns:
+        List of normalized (lowercase) tags
+    
+    Raises:
+        ValueError: If tags are invalid (wrong type, contain whitespace, empty, etc.)
+    """
+    context = f" in {filename}" if filename else ""
+    
+    if not isinstance(tags, list):
+        raise ValueError(f"'tags' must be a list{context}")
+    
+    normalized = []
+    for tag in tags:
+        if not isinstance(tag, str):
+            raise ValueError(f"All tags must be strings{context}, found: {type(tag).__name__}")
+        
+        if any(c.isspace() for c in tag):
+            raise ValueError(f"Tags cannot contain whitespace: '{tag}'{context}")
+        
+        if not tag:
+            raise ValueError(f"Empty tag found{context}")
+        
+        normalized.append(tag.lower())
+    
+    return normalized
+
+
 def get_version_from_pyproject() -> str:
     """
     Read version from pyproject.toml using Python's built-in TOML parser.

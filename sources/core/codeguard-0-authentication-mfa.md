@@ -13,6 +13,9 @@ languages:
 - ruby
 - swift
 - typescript
+tags:
+- authentication
+- web-security
 alwaysApply: false
 ---
 

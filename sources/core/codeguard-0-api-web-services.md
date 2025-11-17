@@ -12,6 +12,10 @@ languages:
 - typescript
 - xml
 - yaml
+tags:
+- api
+- web-security
+- microservices
 alwaysApply: false
 ---
 

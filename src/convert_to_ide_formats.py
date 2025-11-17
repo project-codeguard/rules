@@ -36,6 +36,23 @@ def sync_plugin_metadata(version: str) -> None:
     print(f"✅ Synced plugin metadata to {version}")
 
 
+def matches_tag_filter(rule_tags: list[str], filter_tags: list[str]) -> bool:
+    """
+    Check if rule has all required tags (case-insensitive AND logic).
+    
+    Args:
+        rule_tags: List of tags from the rule (already lowercase from parsing)
+        filter_tags: List of tags to filter by
+    
+    Returns:
+        True if rule has all filter tags (or no filter), False otherwise
+    """
+    if not filter_tags:
+        return True  # No filter means all pass
+    
+    return all(tag.lower() in rule_tags for tag in filter_tags)
+
+
 def update_skill_md(language_to_rules: dict[str, list[str]], skill_path: str) -> None:
     """
     Update SKILL.md with language-to-rules mapping table.
@@ -81,7 +98,7 @@ def update_skill_md(language_to_rules: dict[str, list[str]], skill_path: str) ->
     print(f"Updated SKILL.md with language mappings")
 
 
-def convert_rules(input_path: str, output_dir: str = "dist", include_claudecode: bool = True, version: str = None) -> dict[str, list[str]]:
+def convert_rules(input_path: str, output_dir: str = "dist", include_claudecode: bool = True, version: str = None, filter_tags: list[str] = None) -> dict[str, list[str]]:
     """
     Convert rule file(s) to all supported IDE formats using RuleConverter.
 
@@ -90,6 +107,7 @@ def convert_rules(input_path: str, output_dir: str = "dist", include_claudecode:
         output_dir: Output directory (default: 'dist/')
         include_claudecode: Whether to generate Claude Code plugin (default: True, only for core rules)
         version: Version string to use (default: read from pyproject.toml)
+        filter_tags: Optional list of tags to filter by (AND logic, case-insensitive)
 
     Returns:
         Dictionary with 'success' and 'errors' lists:
@@ -138,7 +156,7 @@ def convert_rules(input_path: str, output_dir: str = "dist", include_claudecode:
     # Setup output directory
     output_base = Path(output_dir)
 
-    results = {"success": [], "errors": []}
+    results = {"success": [], "errors": [], "skipped": []}
     language_to_rules = defaultdict(list)
 
     # Process each file
@@ -146,6 +164,11 @@ def convert_rules(input_path: str, output_dir: str = "dist", include_claudecode:
         try:
             # Convert the file (raises exceptions on error)
             result = converter.convert(md_file)
+            
+            # Apply tag filter if specified
+            if filter_tags and not matches_tag_filter(result.tags, filter_tags):
+                results["skipped"].append(result.filename)
+                continue
 
             # Write each format
             output_files = []
@@ -192,9 +215,14 @@ def convert_rules(input_path: str, output_dir: str = "dist", include_claudecode:
             results["errors"].append(error_msg)
 
     # Summary
-    print(
-        f"\nResults: {len(results['success'])} success, {len(results['errors'])} errors"
-    )
+    if filter_tags:
+        print(
+            f"\nResults: {len(results['success'])} success, {len(results['skipped'])} skipped (tag filter), {len(results['errors'])} errors"
+        )
+    else:
+        print(
+            f"\nResults: {len(results['success'])} success, {len(results['errors'])} errors"
+        )
 
     # Generate SKILL.md with language mappings (only if Claude Code is included)
     if include_claudecode and language_to_rules:
@@ -256,6 +284,12 @@ if __name__ == "__main__":
         default="dist",
         help="Output directory for generated bundles (default: dist).",
     )
+    parser.add_argument(
+        "--tag",
+        "--tags",
+        dest="tags",
+        help="Filter rules by tags (comma-separated, case-insensitive, AND logic). Example: --tag api,web-security",
+    )
     
     cli_args = parser.parse_args()
     source_paths = _resolve_source_paths(cli_args)
@@ -316,7 +350,16 @@ if __name__ == "__main__":
         print()
     
     # Convert all sources
-    aggregated = {"success": [], "errors": []}
+    aggregated = {"success": [], "errors": [], "skipped": []}
+    # Parse comma-separated tags
+    filter_tags = None
+    if cli_args.tags:
+        filter_tags = [tag.strip() for tag in cli_args.tags.split(",") if tag.strip()]
+    
+    # Print tag filter info if active
+    if filter_tags:
+        print(f"Tag filter active: {', '.join(filter_tags)} (AND logic - rules must have all tags)\n")
+    
     for source_path in source_paths:
         is_core = source_path == Path("sources/core")
         
@@ -325,11 +368,14 @@ if __name__ == "__main__":
             str(source_path), 
             cli_args.output_dir, 
             include_claudecode=is_core,
-            version=version
+            version=version,
+            filter_tags=filter_tags
         )
         
         aggregated["success"].extend(results["success"])
         aggregated["errors"].extend(results["errors"])
+        if "skipped" in results:
+            aggregated["skipped"].extend(results["skipped"])
         print("")
     
     if aggregated["errors"]:
