@@ -66,14 +66,17 @@ def validate_tags(tags, filename=None) -> list[str]:
         filename: Optional filename for better error messages
     
     Returns:
-        List of normalized (lowercase) tags
+        List of normalized (lowercase) tags with duplicates removed.
+        Original order is preserved.
     
     Raises:
         ValueError: If tags are invalid (wrong type, empty list, contain whitespace, etc.)
     
     Note:
-        An empty tags list (tags: []) is considered invalid. If you have no tags,
-        omit the 'tags' field entirely from the frontmatter.
+        - An empty tags list (tags: []) is considered invalid. If you have no tags,
+          omit the 'tags' field entirely from the frontmatter.
+        - Duplicate tags (after normalization) are automatically removed while
+          preserving the order of first occurrence.
     """
     context = f" in {filename}" if filename else ""
     
@@ -96,7 +99,7 @@ def validate_tags(tags, filename=None) -> list[str]:
         
         normalized.append(tag.lower())
     
-    return list(set(normalized))
+    return list(dict.fromkeys(normalized))
 
 
 def get_version_from_pyproject() -> str:
