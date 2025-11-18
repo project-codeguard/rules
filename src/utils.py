@@ -62,19 +62,26 @@ def validate_tags(tags, filename=None) -> list[str]:
     Validate tags list and return normalized (lowercase) tags.
     
     Args:
-        tags: The tags value to validate (should be a list)
+        tags: The tags value to validate (should be a non-empty list)
         filename: Optional filename for better error messages
     
     Returns:
         List of normalized (lowercase) tags
     
     Raises:
-        ValueError: If tags are invalid (wrong type, contain whitespace, empty, etc.)
+        ValueError: If tags are invalid (wrong type, empty list, contain whitespace, etc.)
+    
+    Note:
+        An empty tags list (tags: []) is considered invalid. If you have no tags,
+        omit the 'tags' field entirely from the frontmatter.
     """
     context = f" in {filename}" if filename else ""
     
     if not isinstance(tags, list):
         raise ValueError(f"'tags' must be a list{context}")
+    
+    if not tags:
+        raise ValueError(f"'tags' list cannot be empty{context}. Omit the field if you have no tags.")
     
     normalized = []
     for tag in tags:
@@ -89,7 +96,7 @@ def validate_tags(tags, filename=None) -> list[str]:
         
         normalized.append(tag.lower())
     
-    return normalized
+    return list(set(normalized))
 
 
 def get_version_from_pyproject() -> str:

@@ -38,11 +38,11 @@ def sync_plugin_metadata(version: str) -> None:
 
 def matches_tag_filter(rule_tags: list[str], filter_tags: list[str]) -> bool:
     """
-    Check if rule has all required tags (case-insensitive AND logic).
+    Check if rule has all required tags (AND logic).
     
     Args:
-        rule_tags: List of tags from the rule (already lowercase from parsing)
-        filter_tags: List of tags to filter by
+        rule_tags: List of tags from the rule (already normalized to lowercase)
+        filter_tags: List of tags to filter by (already normalized to lowercase)
     
     Returns:
         True if rule has all filter tags (or no filter), False otherwise
@@ -50,7 +50,7 @@ def matches_tag_filter(rule_tags: list[str], filter_tags: list[str]) -> bool:
     if not filter_tags:
         return True  # No filter means all pass
     
-    return all(tag.lower() in rule_tags for tag in filter_tags)
+    return all(tag in rule_tags for tag in filter_tags)
 
 
 def update_skill_md(language_to_rules: dict[str, list[str]], skill_path: str) -> None:
@@ -351,10 +351,10 @@ if __name__ == "__main__":
     
     # Convert all sources
     aggregated = {"success": [], "errors": [], "skipped": []}
-    # Parse comma-separated tags
+    # Parse comma-separated tags and normalize to lowercase
     filter_tags = None
     if cli_args.tags:
-        filter_tags = [tag.strip() for tag in cli_args.tags.split(",") if tag.strip()]
+        filter_tags = [tag.strip().lower() for tag in cli_args.tags.split(",") if tag.strip()]
     
     # Print tag filter info if active
     if filter_tags:
