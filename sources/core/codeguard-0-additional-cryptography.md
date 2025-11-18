@@ -14,6 +14,9 @@ languages:
 - typescript
 - xml
 - yaml
+tags:
+- data-security
+- secrets
 alwaysApply: false
 ---
 

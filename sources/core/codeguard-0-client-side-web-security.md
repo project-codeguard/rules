@@ -8,6 +8,8 @@ languages:
 - php
 - typescript
 - vlang
+tags:
+- web
 alwaysApply: false
 ---
 

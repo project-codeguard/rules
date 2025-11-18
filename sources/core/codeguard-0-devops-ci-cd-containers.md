@@ -8,6 +8,8 @@ languages:
 - shell
 - xml
 - yaml
+tags:
+- infrastructure
 alwaysApply: false
 ---
 

@@ -12,7 +12,8 @@ import sys
 from pathlib import Path
 
 from language_mappings import LANGUAGE_TO_EXTENSIONS
-from utils import parse_frontmatter_and_content
+from tag_mappings import KNOWN_TAGS
+from utils import parse_frontmatter_and_content, validate_tags
 
 
 def validate_rule(file_path: Path) -> dict[str, list[str]]:
@@ -53,6 +54,17 @@ def validate_rule(file_path: Path) -> dict[str, list[str]]:
             ]
             if unknown:
                 warnings.append(f"Unknown languages: {', '.join(unknown)}")
+
+        # Validate tags if present
+        if "tags" in frontmatter:
+            try:
+                normalized_tags = validate_tags(frontmatter["tags"], file_path.name)
+                # Error on tags not in known list
+                unknown_tags = [tag for tag in normalized_tags if tag not in KNOWN_TAGS]
+                if unknown_tags:
+                    errors.append(f"Unknown tags (add to KNOWN_TAGS): {', '.join(sorted(unknown_tags))}")
+            except ValueError as e:
+                errors.append(str(e))
 
         # Check content exists
         if not markdown_content.strip():
