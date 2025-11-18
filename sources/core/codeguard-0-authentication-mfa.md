@@ -15,7 +15,7 @@ languages:
 - typescript
 tags:
 - authentication
-- web-security
+- web
 alwaysApply: false
 ---
 

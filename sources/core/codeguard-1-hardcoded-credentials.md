@@ -1,6 +1,8 @@
 ---
 description: No Hardcoded Credentials
 languages: []
+tags:
+- secrets
 alwaysApply: true
 ---
 

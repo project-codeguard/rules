@@ -4,6 +4,8 @@ description: Kubernetes hardening (RBAC, admission policies, network policies, s
 languages:
 - javascript
 - yaml
+tags:
+- infrastructure
 alwaysApply: false
 ---
 

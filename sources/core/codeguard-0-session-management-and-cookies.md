@@ -11,6 +11,9 @@ languages:
 - python
 - ruby
 - typescript
+tags:
+- authentication
+- web
 alwaysApply: false
 ---
 

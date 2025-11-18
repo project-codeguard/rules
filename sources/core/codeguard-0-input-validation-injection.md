@@ -14,6 +14,8 @@ languages:
 - shell
 - sql
 - typescript
+tags:
+- web
 alwaysApply: false
 ---
 

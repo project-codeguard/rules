@@ -12,6 +12,7 @@ import sys
 from pathlib import Path
 
 from language_mappings import LANGUAGE_TO_EXTENSIONS
+from tag_mappings import KNOWN_TAGS
 from utils import parse_frontmatter_and_content, validate_tags
 
 
@@ -57,7 +58,11 @@ def validate_rule(file_path: Path) -> dict[str, list[str]]:
         # Validate tags if present
         if "tags" in frontmatter:
             try:
-                validate_tags(frontmatter["tags"], file_path.name)
+                normalized_tags = validate_tags(frontmatter["tags"], file_path.name)
+                # Error on tags not in known list
+                unknown_tags = [tag for tag in normalized_tags if tag not in KNOWN_TAGS]
+                if unknown_tags:
+                    errors.append(f"Unknown tags (add to KNOWN_TAGS): {', '.join(sorted(unknown_tags))}")
             except ValueError as e:
                 errors.append(str(e))
 

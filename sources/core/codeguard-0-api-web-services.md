@@ -13,9 +13,7 @@ languages:
 - xml
 - yaml
 tags:
-- api
-- web-security
-- microservices
+- web
 alwaysApply: false
 ---
 
