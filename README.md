@@ -10,12 +10,12 @@ This project is an AI model-agnostic security framework and ruleset (internally 
 
 AI coding agents are transforming software engineering, but this speed can introduce security vulnerabilities. Is your AI coding agent implementation introducing security vulnerabilities?
 
-- ❌ Skipping input validation
-- ❌ Hardcoding secrets and credentials
-- ❌ Using weak cryptographic algorithms
-- ❌ Relying on unsafe functions
-- ❌ Missing authentication/authorization checks
-- ❌ Missing any other security best practice
+- Skipping input validation
+- Hardcoding secrets and credentials
+- Using weak cryptographic algorithms
+- Relying on unsafe functions
+- Missing authentication/authorization checks
+- Missing any other security best practice
 
 Project CodeGuard solves this by embedding security best practices directly into AI coding agent workflows. 
 
@@ -31,14 +31,14 @@ Project CodeGuard is designed to integrate seamlessly across the entire AI codin
 
 Our rules cover essential security domains:
 
-- **🔐 Cryptography**: Safe algorithms (including post-quantum cryptography), secure key management, certificate validation
-- **🛡️ Input Validation**: SQL injection prevention, XSS protection, command injection defense
-- **🔑 Authentication**: MFA best practices, OAuth/OIDC, secure session management
-- **⚡ Authorization**: RBAC/ABAC, access control, IDOR prevention
-- **📦 Supply Chain**: Dependency security, SBOM generation, vulnerability management
-- **☁️ Cloud Security**: IaC hardening, container security, Kubernetes best practices
-- **📱 Platform Security**: Mobile apps, web services, API security
-- **🔍 Data Protection**: Privacy, encryption at rest/transit, secure storage
+- **Cryptography**: Safe algorithms (including post-quantum cryptography), secure key management, certificate validation
+- **Input Validation**: SQL injection prevention, XSS protection, command injection defense
+- **Authentication**: MFA best practices, OAuth/OIDC, secure session management
+- **Authorization**: RBAC/ABAC, access control, IDOR prevention
+- **Supply Chain**: Dependency security, SBOM generation, vulnerability management
+- **Cloud Security**: IaC hardening, container security, Kubernetes best practices
+- **Platform Security**: Mobile apps, web services, API security
+- **Data Protection**: Privacy, encryption at rest/transit, secure storage
 
 ## Quick Start
 
