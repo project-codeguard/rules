@@ -11,17 +11,19 @@ Concise Code Guard focused on what to implement and how to test it.
 
 ## Implementation (Do this)
 - Enforce TLS 1.3 only (or later when available).
+- IPsec: Enforce IKEv2 only; use ESP with AEAD (e.g. AES‑256‑GCM or stronger); require PFS via ECDHE (X25519 or secp256r1); use SHA‑256+ for IKE PRF/auth; disable IKEv1 and legacy suites (3DES, DES, MD5, SHA‑1, AES‑CBC); 
+- IKEv2 PQC support: implement RFC 9242 (IKEv2 Intermediate Exchange) and RFC 9370 (Multiple Key Exchanges in IKEv2) to enable hybrid PQC + ECDHE and handle larger exchanges. Select Hybrid KEM with ML‑KEM‑768 + ECDHE; ML‑KEM‑1024 where required.
 - Use vendor‑supported crypto APIs only; never implement custom crypto. Do not hand‑roll hybrids or hardcode experimental group names/OIDs.
- - Symmetric encryption: Shor's algorithm and quantum computers do not affect symmetric algorithms like AES; using AES‑256 keys (or stronger) is highly recommended.
- - Hybrid KEM: enable vendor‑documented hybrids that include ML‑KEM‑768 with a classical ECDHE group (X25519 or secp256r1). Use ML‑KEM‑1024 for high‑assurance segments after validating overhead.
+- Symmetric encryption: Shor's algorithm and quantum computers do not affect symmetric algorithms like AES; using AES‑256 keys (or stronger) is strongly recommended.
+- Hybrid KEM: enable vendor‑documented hybrids that include ML‑KEM‑768 with a classical ECDHE group (X25519 or secp256r1). Use ML‑KEM‑1024 for high‑assurance segments after validating overhead.
 - Multi-tenant systems that share crypto resources across tenants should select Hybrid KEM with ML‑KEM‑768 + ECDHE; ML‑KEM‑1024 where required.  X25519 is recommended for ECDHE.
-  - Avoid predecessors: remove legacy/draft “Hybrid‑Kyber” groups (e.g., CECPQ2; X25519Kyber…, P256_Kyber) and draft OIDs.
-  - Configuration, not code: expose algorithm choices in config/policy; document fallback behavior; keep a classical‑only fallback for incompatible clients if you don't control both client and server.
-  - Key management: use KMS/HSM; generate keys with a CSPRNG; separate encryption vs signatures; rotate per policy; never hardcode keys/parameters; avoid plain env vars for long‑lived secrets; require hardware‑backed keys (HSM/TPM) for private key storage.
-  - Certificates/signatures: continue ECDSA (P‑256) for mTLS and code signing until hardware‑backed ML‑DSA is available in your stack (e.g., HSM or TPM); plan migration to ML‑DSA once supported.
-  - Hardware requirement for ML‑DSA: do not enable PQC ML‑DSA signatures using software‑only keys. Require HSM/TPM‑backed key storage and signing paths before migrating.
-  - Telemetry and limits: capture negotiated groups, handshake sizes, and retry/failure causes. Tune TLS record sizes and proxy/LB/concentrator limits to avoid fragmentation and timeouts.
-  - SSH/HPKE: enable only vendor‑supported PQC/hybrid KEX (e.g., sntrup761x25519 in OpenSSH if allowed). For HPKE, rely on native language runtime/vendor/audited libraries that support ML‑KEM.
+- Avoid predecessors: remove legacy/draft “Hybrid‑Kyber” groups (e.g., CECPQ2; X25519Kyber…, P256_Kyber) and draft OIDs.
+- Configuration, not code: expose algorithm choices in config/policy; document fallback behavior; keep a classical‑only fallback for incompatible clients if you don't control both client and server.
+- Key management: use KMS/HSM; generate keys with a CSPRNG; separate encryption vs signatures; rotate per policy; never hardcode keys/parameters; avoid plain env vars for long‑lived secrets; require hardware‑backed keys (HSM/TPM) for private key storage.
+- Certificates/signatures: continue ECDSA (P‑256) for mTLS and code signing until hardware‑backed ML‑DSA is available in your stack (e.g., HSM or TPM); plan migration to ML‑DSA once supported.
+- Hardware requirement for ML‑DSA: do not enable PQC ML‑DSA signatures using software‑only keys. Require HSM/TPM‑backed key storage and signing paths before migrating.
+- Telemetry and limits: capture negotiated groups, handshake sizes, and retry/failure causes. Tune TLS record sizes and proxy/LB/concentrator limits to avoid fragmentation and timeouts.
+- SSH/HPKE: enable only vendor‑supported PQC/hybrid KEX (e.g., sntrup761x25519 in OpenSSH if allowed). For HPKE, rely on native language runtime/vendor/audited libraries that support ML‑KEM.
 
 ## Migration
 - Inventory endpoints and crypto usage.
