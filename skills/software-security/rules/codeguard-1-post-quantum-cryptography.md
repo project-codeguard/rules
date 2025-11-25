@@ -10,7 +10,7 @@ rule_id: codeguard-1-post-quantum-cryptography
 Concise Code Guard focused on what to implement and how to test it.
 
 ## Implementation (Do this)
-- Enforce TLS 1.3 only (or later when available).
+- Enforce (D)TLS 1.3 only (or later when available).
 - IPsec: Enforce IKEv2 only; use ESP with AEAD (e.g. AES‑256‑GCM or stronger); require PFS via ECDHE (X25519 or secp256r1); use SHA‑256+ for IKE PRF/auth; disable IKEv1 and legacy suites (3DES, DES, MD5, SHA‑1, AES‑CBC); 
 - IKEv2 PQC support: implement RFC 9242 (IKEv2 Intermediate Exchange) and RFC 9370 (Multiple Key Exchanges in IKEv2) to enable hybrid PQC + ECDHE and handle larger exchanges. Select Hybrid KEM with ML‑KEM‑768 + ECDHE; ML‑KEM‑1024 where required.
 - Use vendor‑supported crypto APIs only; never implement custom crypto. Do not hand‑roll hybrids or hardcode experimental group names/OIDs.
