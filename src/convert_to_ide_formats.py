@@ -16,7 +16,7 @@ from pathlib import Path
 from collections import defaultdict
 
 from converter import RuleConverter
-from formats import CursorFormat, WindsurfFormat, CopilotFormat, ClaudeCodeFormat
+from formats import CursorFormat, WindsurfFormat, CopilotFormat, ClaudeCodeFormat, AntigravityFormat
 from utils import get_version_from_pyproject
 from validate_versions import set_plugin_version, set_marketplace_version
 
@@ -128,6 +128,7 @@ def convert_rules(input_path: str, output_dir: str = "dist", include_claudecode:
         CursorFormat(version),
         WindsurfFormat(version),
         CopilotFormat(version),
+        AntigravityFormat(version),
     ]
     
     # Only include Claude Code for core rules (committed plugin)
