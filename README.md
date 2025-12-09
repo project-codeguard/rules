@@ -1,4 +1,7 @@
 # Project CodeGuard: Security Rules for AI Coding Agents
+
+[![Run in Smithery](https://smithery.ai/badge/skills/project-codeguard)](https://smithery.ai/skills?ns=project-codeguard&utm_source=github&utm_medium=badge)
+
 ![Securing](https://img.shields.io/badge/Securing%20AI%20Generated%20Code-green)
 ![Open Source](https://img.shields.io/badge/Now-Open%20Source-brightgreen)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
