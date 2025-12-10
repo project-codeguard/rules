@@ -5,7 +5,7 @@
 """
 Antigravity Format Implementation
 
-Generates .md workflow files for Google Antigravity with YAML frontmatter.
+Generates .md rule files for Google Antigravity with YAML frontmatter.
 """
 
 from formats.base import BaseFormat, ProcessedRule
