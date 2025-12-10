@@ -54,6 +54,6 @@ Concise Code Guard focused on what to implement and how to test it.
 - Interoperability: verify hybrid ML‑KEM‑768 and ML‑KEM‑1024 handshakes across representative clients; validate negotiated groups and fallback paths.
 - Interoperability ((D)TLS): verify negotiation of X25519MLKEM768 / SecP256r1MLKEM768 hybrids and fallback to classical ECDHE; validate pure ML‑KEM groups only in staged tests.
 - Interoperability (IKEv2/IPsec): verify hybrid ML‑KEM‑768 + ECDHE (X25519 or P‑256) via RFC 9242/9370 multi‑KE; confirm fallback to classical ECDHE; evaluate ML‑KEM‑1024 where required. Use vendor‑documented identifiers;
-- Re‑key (IKEv2/IPsec): validate re‑key of IKE_SA and CHILD_SA maintains hybrid ML‑KEM + ECDHE; confirm no fallback to classical‑only on re‑key; measure re‑key overhead.
+- Re‑key (IKEv2/IPsec): validate re‑key of IKE_SA and CHILD_SAs maintains hybrid ML‑KEM + ECDHE; confirm no fallback to classical‑only on re‑key; measure re‑key overhead.
 - Negative: reject legacy/draft Hybrid‑Kyber identifiers and misconfigured groups.
 - Performance: measure handshake size and latency (peak and P95) and server CPU after enabling hybrids; tune record sizes and limits as needed.
