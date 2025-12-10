@@ -13,13 +13,13 @@ from formats.base import BaseFormat, ProcessedRule
 
 class AntigravityFormat(BaseFormat):
     """
-    Google Antigravity format implementation (.md workflow files).
+    Google Antigravity format implementation (.md rule files).
 
     Antigravity uses .md files with YAML frontmatter containing:
     - description: Rule description (required by Antigravity spec)
     
-    Workflows are stored in .agent/workflows/ and can be triggered
-    on-demand with /workflow-name in the Antigravity interface.
+    Rules are stored in .agent/rules/ and can be triggered
+    on-demand with /rule-name in the Antigravity interface.
     """
 
     def get_format_name(self) -> str:
