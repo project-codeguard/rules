@@ -32,7 +32,7 @@ Concise Code Guard focused on what to implement and how to test it.
 - Hardware requirement for ML‑DSA: do not enable PQC ML‑DSA signatures using software‑only keys. Require HSM/TPM‑backed key storage and signing paths before migrating.
 - Telemetry and limits: capture negotiated groups, handshake sizes, and retry/failure causes. Tune (D)TLS record sizes and proxy/LB/concentrator limits to avoid fragmentation and timeouts.
 - SSH/HPKE: enable only vendor‑supported PQC/hybrid KEX (e.g., sntrup761x25519 in OpenSSH if allowed). For HPKE, rely on native language runtime/vendor/audited libraries that support ML‑KEM.
-- IPsec re-key: configure time/byte‑based lifetimes to re‑key IKE_SA and CHILD_SAs; ensure re‑key maintains the same algorithms used during IKEv2 exchanges.
+- IPsec re‑key: configure time/byte‑based lifetimes to re‑key IKE_SA and CHILD_SAs; ensure re‑key maintains the same algorithms used during IKEv2 exchanges.
 
 ## Migration
 - Inventory endpoints and crypto usage.
