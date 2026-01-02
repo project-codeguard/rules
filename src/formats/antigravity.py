@@ -16,10 +16,14 @@ class AntigravityFormat(BaseFormat):
     Google Antigravity format implementation (.md rule files).
 
     Antigravity uses .md files with YAML frontmatter containing:
-    - description: Rule description (required by Antigravity spec)
+    - trigger: 'always_on' or 'glob' (activation type)
+    - globs: (if trigger is 'glob') File matching patterns
+    - description: Rule description
+    - version: Rule version
     
-    Rules are stored in .agent/rules/ and can be triggered
-    on-demand with /rule-name in the Antigravity interface.
+    Rules use activation types (Always On or Glob) to determine when
+    they apply, similar to Windsurf's implementation.
+    See: https://antigravity.google/docs/rules-workflows
     """
 
     def get_format_name(self) -> str:
@@ -40,27 +44,31 @@ class AntigravityFormat(BaseFormat):
 
         Args:
             rule: The processed rule to format
-            globs: Glob patterns for file matching (not used by Antigravity)
+            globs: Glob patterns for file matching
 
         Returns:
-            Formatted .md content with minimal frontmatter
+            Formatted .md content with trigger, globs, description, and version
         
         Note:
-            Antigravity workflows use simple markdown with description-only
-            frontmatter. Language/glob information is not needed as workflows
-            are triggered manually by the user.
+            Antigravity rules use activation types:
+            - 'always_on': Rule applies to all files (when alwaysApply is true)
+            - 'glob': Rule applies to files matching glob patterns (language-specific)
         """
         yaml_lines = []
+
+        # Use trigger: always_on for rules that should always apply
+        if rule.always_apply:
+            yaml_lines.append("trigger: always_on")
+        else:
+            yaml_lines.append("trigger: glob")
+            yaml_lines.append(f"globs: {globs}")
 
         # Add description (required by Antigravity spec)
         desc = self._format_yaml_field("description", rule.description)
         if desc:
             yaml_lines.append(desc)
-        
-        # Optional: Add tags for categorization (if Antigravity supports it)
-        if rule.tags:
-            yaml_lines.append("tags:")
-            for tag in rule.tags:
-                yaml_lines.append(f"- {tag}")
+
+        # Add version
+        yaml_lines.append(f"version: {self.version}")
 
         return self._build_yaml_frontmatter(yaml_lines, rule.content)
