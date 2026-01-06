@@ -34,7 +34,7 @@ Before you begin, familiarize yourself with how rules work in your IDE:
 === "Google Antigravity"
     Google Antigravity uses `.agent/rules` for rule configuration.
 
-    :material-book-open-page-variant: [Google Antigravity Instructions](https://codelabs.developers.google.com/getting-started-google-antigravity#6)
+    :material-book-open-page-variant: [Google Antigravity Instructions](https://codelabs.developers.google.com/getting-started-google-antigravity#8)
 
 ## Installation
 
