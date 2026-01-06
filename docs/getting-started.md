@@ -45,11 +45,13 @@ Before you begin, familiarize yourself with how rules work in your IDE:
     - `ide-rules-cursor.zip` - Cursor only
     - `ide-rules-windsurf.zip` - Windsurf only
     - `ide-rules-copilot.zip` - GitHub Copilot only
+    - `ide-rules-antigravity.zip` - Antigravity only
 2. **Extract**: Unzip the downloaded file
 3. **Install**: Copy the relevant IDE-specific rules to your project root:
     - For **Cursor**: Copy `.cursor/` directory to your project
     - For **Windsurf**: Copy `.windsurf/` directory to your project
     - For **GitHub Copilot**: Copy `.github/` directory to your project
+    - For **Antigravity**: Copy `.agent/` directory to your project
 
 
 !!! tip "Repository Level Installation"
@@ -165,7 +167,7 @@ To verify the rules are working:
 - **Review Rules**: Explore the security rules in your IDE's rules directory
 - **Test Integration**: Generate some code and see the security guidance in action
 - **Share Feedback**: Help us improve by [opening an issue](https://github.com/project-codeguard/rules/issues)
-- **Contribute**: See [CONTRIBUTING.md](https://github.com/project-codeguard/rules/CONTRIBUTING.md) to contribute new rules or improvements
+- **Contribute**: See [CONTRIBUTING.md](https://github.com/project-codeguard/rules/blob/main/CONTRIBUTING.md) to contribute new rules or improvements
 
 !!! success "You're Ready!"
     Project CodeGuard is now protecting your development workflow. The security rules will automatically guide AI assistants to generate more secure code.

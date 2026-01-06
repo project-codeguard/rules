@@ -54,6 +54,7 @@ jobs:
           zip -r ../ide-rules-cursor.zip .cursor/
           zip -r ../ide-rules-windsurf.zip .windsurf/
           zip -r ../ide-rules-copilot.zip .github/
+          zip -r ../ide-rules-antigravity.zip .agent/
           cd ..
           zip -r ide-rules-all.zip dist/
           ls -lh ide-rules-*.zip
@@ -67,5 +68,6 @@ jobs:
             ide-rules-cursor.zip \
             ide-rules-windsurf.zip \
             ide-rules-copilot.zip \
+            ide-rules-antigravity.zip \
             --clobber
 

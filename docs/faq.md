@@ -50,19 +50,19 @@ This FAQ document provides clear, concise answers to help developers seamlessly 
 
 ## Q: How can I use the rules in my own AI agent?
 
-**A:** You can use the rules in your own AI agent by creating a custom ruleset. You can create a custom ruleset by creating a new file in the `.cursor/rules`, `.windsurf/rules`, or `.github/instructions` directories and adding the rules you want to apply. You can also use the `project-codeguard/rules` repository as a template to create your own ruleset.
+**A:** You can use the rules in your own AI agent by creating a custom ruleset. You can create a custom ruleset by creating a new file in the `.cursor/rules`, `.windsurf/rules`, `.github/instructions`, or `.agent/rules` directories and adding the rules you want to apply. You can also use the `project-codeguard/rules` repository as a template to create your own ruleset.
 
 ---
 
 ## Q: Why does the downloaded release folder appear empty?
 
-**A:** After downloading and extracting the release, the folders may appear empty because the rule directories (`.cursor/`, `.windsurf/`, `.github/`) start with a dot (`.`) and are hidden by default on most operating systems.
+**A:** After downloading and extracting the release, the folders may appear empty because the rule directories (`.cursor/`, `.windsurf/`, `.github/`, `.agent/`) start with a dot (`.`) and are hidden by default on most operating systems.
 
 **To show hidden files:**
 
 === "macOS"
     
-    In Finder, navigate to the extracted folder and press ++cmd+shift+period++ to toggle the visibility of hidden files. You should now see the `.cursor/`, `.windsurf/`, and `.github/` directories.
+    In Finder, navigate to the extracted folder and press ++cmd+shift+period++ to toggle the visibility of hidden files. You should now see the `.cursor/`, `.windsurf/`, `.github/`, and `.agent/` directories.
 
 === "Windows"
     
@@ -76,7 +76,7 @@ This FAQ document provides clear, concise answers to help developers seamlessly 
     
     In your file manager, press ++ctrl+h++ to toggle hidden files, or use `ls -la` in the terminal to view all files including hidden ones.
 
-Once hidden files are visible, you can copy the appropriate directory (`.cursor/`, `.windsurf/`, or `.github/`) to your project root.
+Once hidden files are visible, you can copy the appropriate directory (`.cursor/`, `.windsurf/`, `.github/`, or `.agent/`) to your project root.
 
 ---
 
