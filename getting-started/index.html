@@ -760,7 +760,7 @@
 
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Before you begin, familiarize yourself with how rules work in your IDE:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Cursor</label><label for="__tabbed_1_2">Windsurf</label><label for="__tabbed_1_3">GitHub Copilot</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Cursor</label><label for="__tabbed_1_2">Windsurf</label><label for="__tabbed_1_3">GitHub Copilot</label><label for="__tabbed_1_4">Antigravity</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Cursor uses <code>.cursor/rules</code> for rule configuration.</p>
@@ -773,6 +773,10 @@
 <div class="tabbed-block">
 <p>GitHub Copilot uses <code>.github/instructions</code> for rule configuration.</p>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg></span> <a href="https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions">GitHub Copilot Instructions</a></p>
+</div>
+<div class="tabbed-block">
+<p>Antigravity uses <code>.agent/rules</code> for rule configuration.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg></span> <a href="https://codelabs.developers.google.com/getting-started-google-antigravity#8">Antigravity Instructions</a></p>
 </div>
 </div>
 </div>
@@ -837,10 +841,13 @@ uv run python src/convert_to_ide_formats.py --source core owasp
 cp -r dist/.cursor/ /path/to/your/project/
 cp -r dist/.windsurf/ /path/to/your/project/
 cp -r dist/.github/ /path/to/your/project/
+cp -r dist/.agent/ /path/to/your/project/
 </code></pre>
 <h2 id="verify-installation">Verify Installation</h2>
 <p>After installation, your project structure should include:</p>
 <pre><code>your-project/
+├── .agent/
+│   └── rules/
 ├── .cursor/
 │   └── rules/
 ├── .windsurf/
