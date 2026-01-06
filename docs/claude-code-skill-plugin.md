@@ -290,7 +290,7 @@ uv run python src/convert_to_ide_formats.py
 This command:
 - Converts unified rules from `sources/` to IDE-specific formats
 - Generates `skills/` directory with the 22 core security rules (Claude Code plugin)
-- Creates `dist/` with IDE-specific formats (Cursor, Windsurf, Copilot)
+- Creates `dist/` with IDE-specific formats (Cursor, Windsurf, Copilot, Antigravity)
 
 **Note:** The Claude Code plugin (`skills/`) always contains only the 22 curated core rules. To build bundles with OWASP supplementary rules for other IDEs, use `--source core owasp`, but this only affects `dist/`, not `skills/`.
 

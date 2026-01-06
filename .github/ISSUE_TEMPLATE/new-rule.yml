@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for your new rule request! Please provide as much detail as possible. Use any of the existing rules as a reference. You only have to provide the rule contents (markdown), not the rule metadata. We will handle the rest. In other words, convert your rule into all the formats (Cursor, Windsurf, Copilot).
+        Thank you for your new rule request! Please provide as much detail as possible. Use any of the existing rules as a reference. You only have to provide the rule contents (markdown), not the rule metadata. We will handle the rest. In other words, convert your rule into all the formats (Cursor, Windsurf, Copilot, Antigravity).
 
   - type: textarea
     id: description
