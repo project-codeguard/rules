@@ -5,7 +5,7 @@
 """
 Antigravity Format Implementation
 
-Generates .md rule files for Google Antigravity with YAML frontmatter.
+Generates .md rule files for Antigravity with YAML frontmatter.
 """
 
 from formats.base import BaseFormat, ProcessedRule
@@ -13,7 +13,7 @@ from formats.base import BaseFormat, ProcessedRule
 
 class AntigravityFormat(BaseFormat):
     """
-    Google Antigravity format implementation (.md rule files).
+    Antigravity format implementation (.md rule files).
 
     Antigravity uses .md files with YAML frontmatter containing:
     - trigger: 'always_on' or 'glob' (activation type)
