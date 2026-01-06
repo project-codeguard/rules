@@ -31,10 +31,10 @@ Before you begin, familiarize yourself with how rules work in your IDE:
     
     :material-book-open-page-variant: [GitHub Copilot Instructions](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions)
 
-=== "Google Antigravity"
-    Google Antigravity uses `.agent/rules` for rule configuration.
+=== "Antigravity"
+    Antigravity uses `.agent/rules` for rule configuration.
 
-    :material-book-open-page-variant: [Google Antigravity Instructions](https://codelabs.developers.google.com/getting-started-google-antigravity#8)
+    :material-book-open-page-variant: [Antigravity Instructions](https://codelabs.developers.google.com/getting-started-google-antigravity#8)
 
 ## Installation
 
