@@ -30,6 +30,7 @@ from formats.cursor import CursorFormat
 from formats.windsurf import WindsurfFormat
 from formats.copilot import CopilotFormat
 from formats.claudecode import ClaudeCodeFormat
+from formats.antigravity import AntigravityFormat
 
 __all__ = [
     "BaseFormat",
@@ -38,4 +39,5 @@ __all__ = [
     "WindsurfFormat",
     "CopilotFormat",
     "ClaudeCodeFormat",
+    "AntigravityFormat",
 ]

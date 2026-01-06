@@ -54,7 +54,7 @@ Get started in minutes:
 ## How It Works
 
 1. **Security rules** are written in unified markdown format (`sources/` directory)
-2. **Conversion tools** translate rules to IDE-specific formats (Cursor, Windsurf, Copilot, Claude Code)
+2. **Conversion tools** translate rules to IDE-specific formats (Cursor, Windsurf, Copilot, Claude Code, Antigravity)
 3. **Release automation** packages rules into downloadable ZIP files
 4. **AI assistants** reference these rules when generating or reviewing code
 5. **Secure code** is produced automatically without developer intervention

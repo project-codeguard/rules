@@ -31,6 +31,11 @@ Before you begin, familiarize yourself with how rules work in your IDE:
     
     :material-book-open-page-variant: [GitHub Copilot Instructions](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions)
 
+=== "Antigravity"
+    Antigravity uses `.agent/rules` for rule configuration.
+
+    :material-book-open-page-variant: [Antigravity Instructions](https://codelabs.developers.google.com/getting-started-google-antigravity#8)
+
 ## Installation
 
 ### Option 1: Download Pre-built Rules (Recommended)
@@ -95,6 +100,7 @@ uv run python src/convert_to_ide_formats.py --source core owasp
 cp -r dist/.cursor/ /path/to/your/project/
 cp -r dist/.windsurf/ /path/to/your/project/
 cp -r dist/.github/ /path/to/your/project/
+cp -r dist/.agent/ /path/to/your/project/
 ```
 
 ## Verify Installation
@@ -103,6 +109,8 @@ After installation, your project structure should include:
 
 ```
 your-project/
+├── .agent/
+│   └── rules/
 ├── .cursor/
 │   └── rules/
 ├── .windsurf/
