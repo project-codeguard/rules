@@ -659,15 +659,15 @@
 <p><strong>A:</strong> The <code>sources/owasp/</code> folder contains supplementary rules based on OWASP cheat sheets. These rules supplement the core security rules and can be optionally included when building from source. By default, only core rules (22 files) are included in standard builds.</p>
 <hr />
 <h2 id="q-how-can-i-use-the-rules-in-my-own-ai-agent">Q: How can I use the rules in my own AI agent?</h2>
-<p><strong>A:</strong> You can use the rules in your own AI agent by creating a custom ruleset. You can create a custom ruleset by creating a new file in the <code>.cursor/rules</code>, <code>.windsurf/rules</code>, or <code>.github/instructions</code> directories and adding the rules you want to apply. You can also use the <code>project-codeguard/rules</code> repository as a template to create your own ruleset.</p>
+<p><strong>A:</strong> You can use the rules in your own AI agent by creating a custom ruleset. You can create a custom ruleset by creating a new file in the <code>.cursor/rules</code>, <code>.windsurf/rules</code>, <code>.github/instructions</code>, or <code>.agent/rules</code> directories and adding the rules you want to apply. You can also use the <code>project-codeguard/rules</code> repository as a template to create your own ruleset.</p>
 <hr />
 <h2 id="q-why-does-the-downloaded-release-folder-appear-empty">Q: Why does the downloaded release folder appear empty?</h2>
-<p><strong>A:</strong> After downloading and extracting the release, the folders may appear empty because the rule directories (<code>.cursor/</code>, <code>.windsurf/</code>, <code>.github/</code>) start with a dot (<code>.</code>) and are hidden by default on most operating systems.</p>
+<p><strong>A:</strong> After downloading and extracting the release, the folders may appear empty because the rule directories (<code>.cursor/</code>, <code>.windsurf/</code>, <code>.github/</code>, <code>.agent/</code>) start with a dot (<code>.</code>) and are hidden by default on most operating systems.</p>
 <p><strong>To show hidden files:</strong></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">macOS</label><label for="__tabbed_1_2">Windows</label><label for="__tabbed_1_3">Linux</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>In Finder, navigate to the extracted folder and press <span class="keys"><kbd class="key-command">Cmd</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-period">.</kbd></span> to toggle the visibility of hidden files. You should now see the <code>.cursor/</code>, <code>.windsurf/</code>, and <code>.github/</code> directories.</p>
+<p>In Finder, navigate to the extracted folder and press <span class="keys"><kbd class="key-command">Cmd</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-period">.</kbd></span> to toggle the visibility of hidden files. You should now see the <code>.cursor/</code>, <code>.windsurf/</code>, <code>.github/</code>, and <code>.agent/</code> directories.</p>
 </div>
 <div class="tabbed-block">
 <p>In File Explorer:</p>
@@ -682,7 +682,7 @@
 </div>
 </div>
 </div>
-<p>Once hidden files are visible, you can copy the appropriate directory (<code>.cursor/</code>, <code>.windsurf/</code>, or <code>.github/</code>) to your project root.</p>
+<p>Once hidden files are visible, you can copy the appropriate directory (<code>.cursor/</code>, <code>.windsurf/</code>, <code>.github/</code>, or <code>.agent/</code>) to your project root.</p>
 <hr />
 <h2 id="q-can-i-use-this-with-claude-code">Q: Can I use this with Claude Code?</h2>
 <p><strong>A:</strong> Yes! Install the Project CodeGuard Claude Code plugin (Agent Skill) and Claude will apply the security rules automatically while you code.</p>
