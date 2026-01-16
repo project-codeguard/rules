@@ -77,6 +77,37 @@ Claude Code uses a plugin system instead of manual file installation:
 
 The plugin will be automatically loaded and apply security rules to your code. See the [Claude Code Plugin documentation](claude-code-skill-plugin.md) for more details.
 
+### OpenAI Codex Skills
+
+OpenAI Codex uses an agent skills system to extend capabilities with task-specific instructions. 
+
+!!! warning "Prerequisites"
+    Make sure you're running the latest version of Codex before installing skills.
+
+To install Project CodeGuard as a Codex skill, open Codex and use the built-in skill installer:
+
+```
+$skill-installer install from https://github.com/project-codeguard/rules/tree/main/skills/software-security
+```
+
+Alternatively, you can manually clone the skill to your project:
+
+```bash
+# Clone to your project's .codex/skills directory
+mkdir -p .codex/skills
+cd .codex/skills
+git clone https://github.com/project-codeguard/rules.git temp
+mv temp/skills/software-security ./
+rm -rf temp
+
+# Restart Codex to load the new skill
+```
+
+Once installed, you can invoke the skill explicitly in your prompts using `$software-security` or Codex will automatically use it when you're trying to write, review, or modify code.
+
+!!! info "Codex Skills Documentation"
+    For more information about Codex skills, skill locations, and configuration, see the [OpenAI Codex Skills documentation](https://developers.openai.com/codex/skills/).
+
 ### Option 2: Build from Source
 
 If you want to customize or contribute to the rules:
