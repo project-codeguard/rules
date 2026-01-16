@@ -380,6 +380,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#openai-codex-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAI Codex Skills
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#option-2-build-from-source" class="md-nav__link">
     <span class="md-ellipsis">
       Option 2: Build from Source
@@ -607,6 +616,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#openai-codex-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAI Codex Skills
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#option-2-build-from-source" class="md-nav__link">
     <span class="md-ellipsis">
       Option 2: Build from Source
@@ -821,6 +839,30 @@
 /plugin install codeguard-security@project-codeguard
 </code></pre>
 <p>The plugin will be automatically loaded and apply security rules to your code. See the <a href="../claude-code-skill-plugin/">Claude Code Plugin documentation</a> for more details.</p>
+<h3 id="openai-codex-skills">OpenAI Codex Skills</h3>
+<p>OpenAI Codex uses <a href="https://agentskills.io/">agent skills</a> to extend capabilities with task-specific instructions. </p>
+<div class="admonition warning">
+<p class="admonition-title">Prerequisites</p>
+<p>Make sure you're running the latest version of Codex before installing skills.</p>
+</div>
+<p>To install Project CodeGuard as a Codex skill, open Codex and use the built-in skill installer:</p>
+<pre><code>$skill-installer install from https://github.com/project-codeguard/rules/tree/main/skills/software-security
+</code></pre>
+<p>Alternatively, you can manually clone the skill to your project:</p>
+<pre><code class="language-bash"># Clone to your project's .codex/skills directory
+mkdir -p .codex/skills
+cd .codex/skills
+git clone https://github.com/project-codeguard/rules.git temp
+mv temp/skills/software-security ./
+rm -rf temp
+
+# Restart Codex to load the new skill
+</code></pre>
+<p>Once installed, you can invoke the skill explicitly in your prompts using <code>$software-security</code> or Codex will automatically use it when you're trying to write, review, or modify code.</p>
+<div class="admonition info">
+<p class="admonition-title">Codex Skills Documentation</p>
+<p>For more information about Codex skills, skill locations, and configuration, see the <a href="https://developers.openai.com/codex/skills/">OpenAI Codex Skills documentation</a>.</p>
+</div>
 <h3 id="option-2-build-from-source">Option 2: Build from Source</h3>
 <p>If you want to customize or contribute to the rules:</p>
 <pre><code class="language-bash"># Clone the repository
