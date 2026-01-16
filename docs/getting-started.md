@@ -79,7 +79,7 @@ The plugin will be automatically loaded and apply security rules to your code. S
 
 ### OpenAI Codex Skills
 
-OpenAI Codex uses an agent skills system to extend capabilities with task-specific instructions. 
+OpenAI Codex uses [agent skills](https://agentskills.io/) to extend capabilities with task-specific instructions. 
 
 !!! warning "Prerequisites"
     Make sure you're running the latest version of Codex before installing skills.
