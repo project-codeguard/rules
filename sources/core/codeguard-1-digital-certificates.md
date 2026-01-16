@@ -1,6 +1,8 @@
 ---
 description: Certificate Best Practices
 languages: []
+tags:
+- secrets
 alwaysApply: true
 ---
 

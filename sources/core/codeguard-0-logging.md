@@ -5,6 +5,8 @@ languages:
 - c
 - javascript
 - yaml
+tags:
+- privacy
 alwaysApply: false
 ---
 

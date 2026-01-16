@@ -12,6 +12,8 @@ languages:
 - typescript
 - xml
 - yaml
+tags:
+- web
 alwaysApply: false
 ---
 

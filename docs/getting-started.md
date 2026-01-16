@@ -2,6 +2,13 @@
 
 Get up and running with Project CodeGuard in just a few steps.
 
+## Project CodeGuard Introduction Video
+[This video](https://www.youtube.com/watch?v=O03MDxUWjsE) introduces Project CodeGuard and includes several demos on how to use it during code generation and code review with Claude Code, Codex, and other coding agents.
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; margin: 2em 0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/O03MDxUWjsE" title="Project CodeGuard Introduction Video and Demos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 ## Prerequisites
 
 Before you begin, familiarize yourself with how rules work in your IDE:
@@ -24,6 +31,11 @@ Before you begin, familiarize yourself with how rules work in your IDE:
     
     :material-book-open-page-variant: [GitHub Copilot Instructions](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions)
 
+=== "Antigravity"
+    Antigravity uses `.agent/rules` for rule configuration.
+
+    :material-book-open-page-variant: [Antigravity Instructions](https://codelabs.developers.google.com/getting-started-google-antigravity#8)
+
 ## Installation
 
 ### Option 1: Download Pre-built Rules (Recommended)
@@ -33,11 +45,13 @@ Before you begin, familiarize yourself with how rules work in your IDE:
     - `ide-rules-cursor.zip` - Cursor only
     - `ide-rules-windsurf.zip` - Windsurf only
     - `ide-rules-copilot.zip` - GitHub Copilot only
+    - `ide-rules-antigravity.zip` - Antigravity only
 2. **Extract**: Unzip the downloaded file
 3. **Install**: Copy the relevant IDE-specific rules to your project root:
     - For **Cursor**: Copy `.cursor/` directory to your project
     - For **Windsurf**: Copy `.windsurf/` directory to your project
     - For **GitHub Copilot**: Copy `.github/` directory to your project
+    - For **Antigravity**: Copy `.agent/` directory to your project
 
 
 !!! tip "Repository Level Installation"
@@ -62,6 +76,37 @@ Claude Code uses a plugin system instead of manual file installation:
 ```
 
 The plugin will be automatically loaded and apply security rules to your code. See the [Claude Code Plugin documentation](claude-code-skill-plugin.md) for more details.
+
+### OpenAI Codex Skills
+
+OpenAI Codex uses [agent skills](https://agentskills.io/) to extend capabilities with task-specific instructions. 
+
+!!! warning "Prerequisites"
+    Make sure you're running the latest version of Codex before installing skills.
+
+To install Project CodeGuard as a Codex skill, open Codex and use the built-in skill installer:
+
+```
+$skill-installer install from https://github.com/project-codeguard/rules/tree/main/skills/software-security
+```
+
+Alternatively, you can manually clone the skill to your project:
+
+```bash
+# Clone to your project's .codex/skills directory
+mkdir -p .codex/skills
+cd .codex/skills
+git clone https://github.com/project-codeguard/rules.git temp
+mv temp/skills/software-security ./
+rm -rf temp
+
+# Restart Codex to load the new skill
+```
+
+Once installed, you can invoke the skill explicitly in your prompts using `$software-security` or Codex will automatically use it when you're trying to write, review, or modify code.
+
+!!! info "Codex Skills Documentation"
+    For more information about Codex skills, skill locations, and configuration, see the [OpenAI Codex Skills documentation](https://developers.openai.com/codex/skills/).
 
 ### Option 2: Build from Source
 
@@ -88,6 +133,7 @@ uv run python src/convert_to_ide_formats.py --source core owasp
 cp -r dist/.cursor/ /path/to/your/project/
 cp -r dist/.windsurf/ /path/to/your/project/
 cp -r dist/.github/ /path/to/your/project/
+cp -r dist/.agent/ /path/to/your/project/
 ```
 
 ## Verify Installation
@@ -96,6 +142,8 @@ After installation, your project structure should include:
 
 ```
 your-project/
+├── .agent/
+│   └── rules/
 ├── .cursor/
 │   └── rules/
 ├── .windsurf/
@@ -150,7 +198,7 @@ To verify the rules are working:
 - **Review Rules**: Explore the security rules in your IDE's rules directory
 - **Test Integration**: Generate some code and see the security guidance in action
 - **Share Feedback**: Help us improve by [opening an issue](https://github.com/project-codeguard/rules/issues)
-- **Contribute**: See [CONTRIBUTING.md](https://github.com/project-codeguard/rules/CONTRIBUTING.md) to contribute new rules or improvements
+- **Contribute**: See [CONTRIBUTING.md](https://github.com/project-codeguard/rules/blob/main/CONTRIBUTING.md) to contribute new rules or improvements
 
 !!! success "You're Ready!"
     Project CodeGuard is now protecting your development workflow. The security rules will automatically guide AI assistants to generate more secure code.

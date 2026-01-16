@@ -10,12 +10,12 @@ This project is an AI model-agnostic security framework and ruleset (internally 
 
 AI coding agents are transforming software engineering, but this speed can introduce security vulnerabilities. Is your AI coding agent implementation introducing security vulnerabilities?
 
-- ❌ Skipping input validation
-- ❌ Hardcoding secrets and credentials
-- ❌ Using weak cryptographic algorithms
-- ❌ Relying on unsafe functions
-- ❌ Missing authentication/authorization checks
-- ❌ Missing any other security best practice
+- Skipping input validation
+- Hardcoding secrets and credentials
+- Using weak cryptographic algorithms
+- Relying on unsafe functions
+- Missing authentication/authorization checks
+- Missing any other security best practice
 
 Project CodeGuard solves this by embedding security best practices directly into AI coding agent workflows. 
 
@@ -31,14 +31,14 @@ Project CodeGuard is designed to integrate seamlessly across the entire AI codin
 
 Our rules cover essential security domains:
 
-- **🔐 Cryptography**: Safe algorithms (including post-quantum cryptography), secure key management, certificate validation
-- **🛡️ Input Validation**: SQL injection prevention, XSS protection, command injection defense
-- **🔑 Authentication**: MFA best practices, OAuth/OIDC, secure session management
-- **⚡ Authorization**: RBAC/ABAC, access control, IDOR prevention
-- **📦 Supply Chain**: Dependency security, SBOM generation, vulnerability management
-- **☁️ Cloud Security**: IaC hardening, container security, Kubernetes best practices
-- **📱 Platform Security**: Mobile apps, web services, API security
-- **🔍 Data Protection**: Privacy, encryption at rest/transit, secure storage
+- **Cryptography**: Safe algorithms (including post-quantum cryptography), secure key management, certificate validation
+- **Input Validation**: SQL injection prevention, XSS protection, command injection defense
+- **Authentication**: MFA best practices, OAuth/OIDC, secure session management
+- **Authorization**: RBAC/ABAC, access control, IDOR prevention
+- **Supply Chain**: Dependency security, SBOM generation, vulnerability management
+- **Cloud Security**: IaC hardening, container security, Kubernetes best practices
+- **Platform Security**: Mobile apps, web services, API security
+- **Data Protection**: Privacy, encryption at rest/transit, secure storage
 
 ## Quick Start
 
@@ -54,7 +54,7 @@ Get started in minutes:
 ## How It Works
 
 1. **Security rules** are written in unified markdown format (`sources/` directory)
-2. **Conversion tools** translate rules to IDE-specific formats (Cursor, Windsurf, Copilot, Claude Code)
+2. **Conversion tools** translate rules to IDE-specific formats (Cursor, Windsurf, Copilot, Agent Skills, Antigravity)
 3. **Release automation** packages rules into downloadable ZIP files
 4. **AI assistants** reference these rules when generating or reviewing code
 5. **Secure code** is produced automatically without developer intervention
@@ -63,7 +63,7 @@ Get started in minutes:
 
 ```
 sources/           # Source rules
-skills/            # Claude Code plugin (generated, committed)
+skills/            # Agent Skills format (generated, committed)
 src/               # Conversion and validation tools
 dist/              # Other IDE bundles (generated, not committed)
 ```

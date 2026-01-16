@@ -160,7 +160,7 @@ git push origin main
 
 **Note**: The conversion script automatically syncs the version from `pyproject.toml` to:
 - `.claude-plugin/plugin.json` and `marketplace.json` (Claude Code plugin metadata)
-- All generated IDE rule files (Cursor `.mdc`, Windsurf `.md`, Copilot `.instructions.md`, Claude Code `.md`)
+- All generated IDE rule files (Cursor `.mdc`, Windsurf `.md`, Copilot `.instructions.md`, Claude Code `.md`, Antigravity `.md`)
 
 This ensures version consistency across all artifacts.
 
@@ -174,7 +174,7 @@ This ensures version consistency across all artifacts.
 
 GitHub Actions will automatically:
 - ✅ Validate versions match the tag
-- ✅ Build IDE bundles (Cursor, Windsurf, Copilot)
+- ✅ Build IDE bundles (Cursor, Windsurf, Copilot, Antigravity)
 - ✅ Upload ZIP artifacts to the release
 
 ## Testing Your Changes

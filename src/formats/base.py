@@ -25,6 +25,7 @@ class ProcessedRule:
         always_apply: Whether this rule should apply to all files
         content: The actual rule content in markdown format
         filename: Original filename of the rule
+        tags: List of tags for categorizing and filtering rules
     """
 
     description: str
@@ -32,6 +33,7 @@ class ProcessedRule:
     always_apply: bool
     content: str
     filename: str
+    tags: list[str]
 
 
 class BaseFormat(ABC):

@@ -8,6 +8,8 @@ languages:
 - ruby
 - shell
 - yaml
+tags:
+- infrastructure
 alwaysApply: false
 ---
 

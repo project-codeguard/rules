@@ -6,6 +6,9 @@ languages:
 - javascript
 - sql
 - yaml
+tags:
+- data-security
+- infrastructure
 alwaysApply: false
 ---
 

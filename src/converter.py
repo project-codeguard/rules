@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from language_mappings import languages_to_globs
-from utils import parse_frontmatter_and_content
+from utils import parse_frontmatter_and_content, validate_tags
 from formats import (
     BaseFormat,
     ProcessedRule,
@@ -45,6 +45,7 @@ class ConversionResult:
         basename: Filename without extension (e.g., 'my-rule')
         outputs: Dictionary mapping format names to their outputs
         languages: List of programming languages the rule applies to, empty list if always applies
+        tags: List of tags for categorizing and filtering rules
     Example:
         result = ConversionResult(
             filename="my-rule.md",
@@ -56,7 +57,8 @@ class ConversionResult:
                     subpath=".cursor/rules"
                 )
             },
-            languages=["python", "javascript"]
+            languages=["python", "javascript"],
+            tags=["authentication", "web-security"]
         )
     """
 
@@ -64,6 +66,7 @@ class ConversionResult:
     basename: str
     outputs: dict[str, FormatOutput]
     languages: list[str]
+    tags: list[str]
 
 
 class RuleConverter:
@@ -159,6 +162,11 @@ class RuleConverter:
                     f"'languages' must be a non-empty list in {filename} when alwaysApply is false"
                 )
 
+        # Parse and validate tags (optional field)
+        tags = []
+        if "tags" in frontmatter:
+            tags = validate_tags(frontmatter["tags"], filename)
+
         # Adding rule_id to the beginning of the content
         rule_id = Path(filename).stem
         markdown_content = f"rule_id: {rule_id}\n\n{markdown_content}"
@@ -169,6 +177,7 @@ class RuleConverter:
             always_apply=always_apply,
             content=markdown_content,
             filename=filename,
+            tags=tags,
         )
 
     def generate_globs(self, languages: list[str]) -> str:
@@ -242,4 +251,5 @@ class RuleConverter:
             basename=basename,
             outputs=outputs,
             languages=rule.languages,
+            tags=rule.tags,
         )
