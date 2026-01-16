@@ -11,7 +11,8 @@ Available Formats:
 - CursorFormat: Generates .mdc files for Cursor IDE
 - WindsurfFormat: Generates .md files for Windsurf IDE
 - CopilotFormat: Generates .instructions.md files for GitHub Copilot
-- ClaudeCodeFormat: Generates .md files for Claude Code plugins
+- AgentSkillsFormat: Generates .md files for Agent Skills (OpenAI Codex, Claude Code, other AI coding tools)
+- AntigravityFormat: Generates .md files for Google Antigravity
 
 Usage:
     from formats import BaseFormat, ProcessedRule, CursorFormat, WindsurfFormat, CopilotFormat, ClaudeCodeFormat
@@ -21,7 +22,8 @@ Usage:
         CursorFormat(version),
         WindsurfFormat(version),
         CopilotFormat(version),
-        ClaudeCodeFormat(version),
+        AgentSkillsFormat(version),
+        AntigravityFormat(version),
     ]
 """
 
@@ -29,7 +31,7 @@ from formats.base import BaseFormat, ProcessedRule
 from formats.cursor import CursorFormat
 from formats.windsurf import WindsurfFormat
 from formats.copilot import CopilotFormat
-from formats.claudecode import ClaudeCodeFormat
+from formats.agentskills import AgentSkillsFormat
 from formats.antigravity import AntigravityFormat
 
 __all__ = [
@@ -38,6 +40,6 @@ __all__ = [
     "CursorFormat",
     "WindsurfFormat",
     "CopilotFormat",
-    "ClaudeCodeFormat",
+    "AgentSkillsFormat",
     "AntigravityFormat",
 ]

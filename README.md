@@ -54,7 +54,7 @@ Get started in minutes:
 ## How It Works
 
 1. **Security rules** are written in unified markdown format (`sources/` directory)
-2. **Conversion tools** translate rules to IDE-specific formats (Cursor, Windsurf, Copilot, Claude Code, Antigravity)
+2. **Conversion tools** translate rules to IDE-specific formats (Cursor, Windsurf, Copilot, Agent Skills, Antigravity)
 3. **Release automation** packages rules into downloadable ZIP files
 4. **AI assistants** reference these rules when generating or reviewing code
 5. **Secure code** is produced automatically without developer intervention
@@ -63,7 +63,7 @@ Get started in minutes:
 
 ```
 sources/           # Source rules
-skills/            # Claude Code plugin (generated, committed)
+skills/            # Agent Skills format (generated, committed)
 src/               # Conversion and validation tools
 dist/              # Other IDE bundles (generated, not committed)
 ```
