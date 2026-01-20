@@ -22,15 +22,24 @@ Actively scan for certificate data using the following heuristics:
 
 Once certificate data is identified, flag it for verification. The following properties must be validated to ensure the certificate meets security requirements:
 
+#### Verification Guidance
+
+To inspect certificate properties, recommend running:
+```
+openssl x509 -text -noout -in <certificate_file>
+```
+
+This command displays expiration dates, key algorithm and size, signature algorithm, and issuer/subject information needed for the checks below.
+
 #### Check 1: Expiration Status
 
-- Condition: The certificate's `notAfter` (expiration) date is before June 23, 2025.
+- Condition: The certificate's `notAfter` (expiration) date is in the past.
 
 - Severity: CRITICAL VULNERABILITY
 
 - Report Message: `This certificate expired on [YYYY-MM-DD]. It is no longer valid and will be rejected by clients, causing connection failures. It must be renewed and replaced immediately.`
 
-- Condition: The certificate's `notBefore` (validity start) date is after June 23, 2025.
+- Condition: The certificate's `notBefore` (validity start) date is in the future.
 
 - Severity: Warning
 
@@ -66,16 +75,6 @@ Once certificate data is identified, flag it for verification. The following pro
 - Severity: Informational
 
 - Report Message: `This is a self-signed certificate. Ensure this is intentional and only used for development, testing, or internal services where trust is explicitly configured. Self-signed certificates should never be used for public-facing production systems as they will not be trusted by browsers or standard clients.`
-
-
-#### Verification Guidance
-
-To inspect certificate properties, recommend running:
-```
-openssl x509 -text -noout -in <certificate_file>
-```
-
-This command displays expiration dates, key algorithm and size, signature algorithm, and issuer/subject information needed for the checks above.
 
 
 ### 3. Actionable Examples
