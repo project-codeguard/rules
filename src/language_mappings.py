@@ -9,6 +9,7 @@ Single source of truth for language-to-extension mappings.
 
 # Master mapping of languages to file extensions
 LANGUAGE_TO_EXTENSIONS = {
+    "apex": [".cls", ".trigger"],
     "python": [".py", ".pyx", ".pyi"],
     "javascript": [".js", ".jsx", ".mjs"],
     "typescript": [".ts", ".tsx"],
