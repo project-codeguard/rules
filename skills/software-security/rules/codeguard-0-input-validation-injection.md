@@ -57,7 +57,7 @@ SOQL and SOSL are query/search languages (no SQL-style DDL/DML). Data changes ar
 - Primary risk: data exfiltration by bypassing intended query filters/business logic; impact is amplified when Apex runs with elevated access (system mode) or when CRUD/FLS aren't enforced.
 - Second-order risk (conditional): if queried records are passed to DML, injection can broaden the record set and cause unintended mass updates/deletes.
 - Prefer static SOQL/SOSL with bind variables: `[SELECT Id FROM Account WHERE Name = :userInput]` or `FIND :term`.
-- For dynamic SOQL, use `Database.queryWithBinds()`; for dynamic SOSL, use `Search.query()`. Allowlist any dynamic identifiers. If concatenation is unavoidable, escape string values with `String.escapeSingleQuotes()`.
+- For dynamic SOQL, use `Database.queryWithBinds()`; for dynamic SOSL, use `Search.query()`. Allow‑list any dynamic identifiers. If concatenation is unavoidable, escape string values with `String.escapeSingleQuotes()`.
 - Enforce CRUD/FLS with `WITH USER_MODE` or `WITH SECURITY_ENFORCED` (don't combine both). Enforce record sharing with `with sharing` or user-mode operations. Use `Security.stripInaccessible()` before DML.
 
 ### LDAP Injection Prevention
