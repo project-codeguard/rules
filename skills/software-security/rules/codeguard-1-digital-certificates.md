@@ -5,7 +5,7 @@ alwaysApply: true
 
 rule_id: codeguard-1-digital-certificates
 
-When you encounter data that appears to be an X.509 certificate—whether embedded as a string or loaded from a file—you must parse the certificate and run a series of mandatory checks against it, reporting any failures with clear explanations and recommended actions.
+When you encounter data that appears to be an X.509 certificate—whether embedded as a string or loaded from a file—you must flag the certificate for verification and ensure the following security properties are validated, reporting any concerns with clear explanations and recommended actions.
 
 ### 1. How to Identify Certificate Data
 
@@ -20,7 +20,7 @@ Actively scan for certificate data using the following heuristics:
 
 ### 2. Mandatory Sanity Checks
 
-Once certificate data is identified, you must perform the following validation steps and report the results.
+Once certificate data is identified, flag it for verification. The following properties must be validated to ensure the certificate meets security requirements:
 
 #### Check 1: Expiration Status
 
@@ -68,11 +68,21 @@ Once certificate data is identified, you must perform the following validation s
 - Report Message: `This is a self-signed certificate. Ensure this is intentional and only used for development, testing, or internal services where trust is explicitly configured. Self-signed certificates should never be used for public-facing production systems as they will not be trusted by browsers or standard clients.`
 
 
+#### Verification Guidance
+
+To inspect certificate properties, recommend running:
+```
+openssl x509 -text -noout -in <certificate_file>
+```
+
+This command displays expiration dates, key algorithm and size, signature algorithm, and issuer/subject information needed for the checks above.
+
+
 ### 3. Actionable Examples
 
 Your feedback should be direct and easy to understand.
 
-Example 1: Flagging an Expired, In-line Certificate
+Example 1: Flagging a Hardcoded Certificate
 
 - Code Snippet:
 
@@ -80,42 +90,47 @@ Example 1: Flagging an Expired, In-line Certificate
     # Certificate for connecting to legacy_service
     LEGACY_CERT = """
     -----BEGIN CERTIFICATE-----
-    MIIC... (data for a certificate that expired on 2024-12-01) ...
+    MIIC... (certificate data) ...
     -----END CERTIFICATE-----
     """
     ```
 
 - Your Analysis and Report:
 
-    > CRITICAL VULNERABILITY: The certificate stored in the `LEGACY_CERT` variable is invalid.
+    > Security Review Required: A certificate is hardcoded in the `LEGACY_CERT` variable. Unverified certificates may contain critical vulnerabilities.
     >
-    > - Reason: It expired on 2024-12-01.
+    > - Concern: Hardcoded certificates cannot be easily rotated and may contain security issues that are not immediately visible in the code.
     >
-    > - Impact: Any TLS connection attempting to use this certificate will fail.
+    > - Required Verification: This certificate must be verified for:
+    >   - Expiration: Certificate must not be expired or not yet valid
+    >   - Key Strength: RSA keys must be at least 2048-bit; EC keys must use P-256 or higher curve
+    >   - Signature Algorithm: Must use SHA-2 family (not MD5 or SHA-1)
+    >   - Self-Signed: If self-signed, must only be used for development, testing, or internal services
     >
-    > - Action: This certificate must be renewed and the variable updated with the new PEM data immediately.
+    > - Action: Verify this certificate meets the above requirements before deployment. Consider loading certificates from external files or a certificate store for easier rotation.
     >
 
 
-Example 2: Flagging a Weak Key in a Loaded Certificate
+Example 2: Flagging a Certificate Loaded from File
 
 - Code Snippet:
 
     ```
     // Load the server certificate from disk
     cert, err := tls.LoadX509KeyPair("server.crt", "server.key")
-    // Assume server.crt contains a 1024-bit RSA key.
     ```
 
 - Your Analysis and Report:
 
-    > High-Priority Warning: The certificate being loaded from `server.crt` is using a weak public key.
+    > Security Review Required: Certificate loaded from `server.crt`. Unverified certificates may contain critical vulnerabilities.
     >
-    > - Reason: It uses an RSA key with a 1024-bit modulus.
+    > - Required Verification: Ensure this certificate meets security requirements:
+    >   - Expiration: Certificate must not be expired or not yet valid
+    >   - Key Strength: RSA keys must be at least 2048-bit; EC keys must use P-256 or higher curve
+    >   - Signature Algorithm: Must use SHA-2 family (not MD5 or SHA-1)
+    >   - Self-Signed: If self-signed, must only be used for development, testing, or internal services
     >
-    > - Impact: This key strength is insufficient and vulnerable to modern cryptanalytic attacks.
-    >
-    > - Action: A new certificate and key must be generated with at least a 2048-bit RSA key or a modern elliptic curve.
+    > - Action: Verify this certificate meets the above requirements before deployment.
 
 
 You must always explain how this rule was applied and why it was applied.
