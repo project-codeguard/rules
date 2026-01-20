@@ -15,7 +15,7 @@ Available Formats:
 - AntigravityFormat: Generates .md files for Google Antigravity
 
 Usage:
-    from formats import BaseFormat, ProcessedRule, CursorFormat, WindsurfFormat, CopilotFormat, ClaudeCodeFormat
+    from formats import BaseFormat, ProcessedRule, CursorFormat, WindsurfFormat, CopilotFormat, AgentSkillsFormat, AntigravityFormat
 
     version = "1.0.0"
     formats = [
