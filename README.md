@@ -78,6 +78,7 @@ python src/convert_to_ide_formats.py  # Generate skills/ and dist/
 ```
 
 **More options**: `python src/convert_to_ide_formats.py --help`  
+**Custom rules**: Create your own rules — see [Custom Rules](https://project-codeguard.org/custom-rules/)  
 **Maintainers**: See [CONTRIBUTING.md](CONTRIBUTING.md) for release process.
 
 ## Community
