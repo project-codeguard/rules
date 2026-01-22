@@ -1,0 +1,32 @@
+---
+description: Brief description of the rule
+languages:
+- python
+- javascript
+tags:
+- data-security
+alwaysApply: false
+---
+
+<!-- The content below is flexible - structure it to fit your use case -->
+
+## Rule Title
+
+Brief overview of what this rule enforces and why it matters.
+
+### Section Name
+- Guidance point with specific recommendation
+- Another specific requirement or best practice
+
+### Another Section
+- Additional guidance organized by topic
+- Keep points concise and actionable
+
+### Implementation Checklist
+- Verify requirement one is met
+- Confirm requirement two is implemented
+- Check that patterns are followed
+
+### Test Plan
+- Describe how to verify the rule is followed
+- Include specific test scenarios
