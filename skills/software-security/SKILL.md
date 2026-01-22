@@ -29,6 +29,7 @@ When writing or reviewing code:
 
 | Language | Rule Files to Apply |
 |----------|---------------------|
+| apex | codeguard-0-input-validation-injection.md |
 | c | codeguard-0-additional-cryptography.md, codeguard-0-api-web-services.md, codeguard-0-authentication-mfa.md, codeguard-0-authorization-access-control.md, codeguard-0-client-side-web-security.md, codeguard-0-data-storage.md, codeguard-0-file-handling-and-uploads.md, codeguard-0-framework-and-languages.md, codeguard-0-iac-security.md, codeguard-0-input-validation-injection.md, codeguard-0-logging.md, codeguard-0-safe-c-functions.md, codeguard-0-session-management-and-cookies.md, codeguard-0-xml-and-serialization.md |
 | cpp | codeguard-0-safe-c-functions.md |
 | d | codeguard-0-iac-security.md |
