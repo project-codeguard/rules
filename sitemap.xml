@@ -2,18 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://project-codeguard.org/</loc>
-         <lastmod>2026-01-16</lastmod>
+         <lastmod>2026-01-22</lastmod>
     </url>
     <url>
          <loc>https://project-codeguard.org/claude-code-skill-plugin/</loc>
-         <lastmod>2026-01-16</lastmod>
+         <lastmod>2026-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://project-codeguard.org/custom-rules/</loc>
+         <lastmod>2026-01-22</lastmod>
     </url>
     <url>
          <loc>https://project-codeguard.org/faq/</loc>
-         <lastmod>2026-01-16</lastmod>
+         <lastmod>2026-01-22</lastmod>
     </url>
     <url>
          <loc>https://project-codeguard.org/getting-started/</loc>
-         <lastmod>2026-01-16</lastmod>
+         <lastmod>2026-01-22</lastmod>
     </url>
 </urlset>
