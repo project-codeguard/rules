@@ -44,6 +44,7 @@ repo_name: project-codeguard/rules
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Custom Rules: custom-rules.md
   - FAQ: faq.md
 markdown_extensions:
   - admonition
