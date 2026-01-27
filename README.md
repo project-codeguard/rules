@@ -1,4 +1,4 @@
-# Project CodeGuard: Security Rules for AI Coding Agents
+# Project CodeGuard: Security Skills and Rules for AI Coding Agents
 ![Securing](https://img.shields.io/badge/Securing%20AI%20Generated%20Code-green)
 ![Open Source](https://img.shields.io/badge/Now-Open%20Source-brightgreen)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -22,14 +22,14 @@ Project CodeGuard solves this by embedding security best practices directly into
 **During and After Code Generation.**
 
 Project CodeGuard is designed to integrate seamlessly across the entire AI coding lifecycle. 
-- **Before code generation**, rules can be used for the design of a product and for spec-driven development. You can use the rules in the “planning phase” of an AI coding agent to steer models toward secure patterns from the start.
-- **During code generation**, rules can help AI agents to prevent security issues as code is being written.
+- **Before code generation**, skills and rules can be used for the design of a product and for spec-driven development. You can use the rules in the “planning phase” of an AI coding agent to steer models toward secure patterns from the start.
+- **During code generation**, skills and rules can help AI agents to prevent security issues as code is being written.
 - **After code generation**, AI agents like Cursor, GitHub Copilot, Codex, Windsurf, and Claude Code can use the rules for code review. 
 
 
 ## Security Coverage
 
-Our rules cover essential security domains:
+Project CodeGuard skills and rules cover essential security domains:
 
 - **Cryptography**: Safe algorithms (including post-quantum cryptography), secure key management, certificate validation
 - **Input Validation**: SQL injection prevention, XSS protection, command injection defense
@@ -44,8 +44,8 @@ Our rules cover essential security domains:
 
 Get started in minutes:
 
-1. **Download the rules** from our [releases page](https://github.com/project-codeguard/rules/releases)
-2. **Copy to your project** - Place AI agent and IDE specific rules in your repository
+1. **Download the skills and rules** from our [releases page](https://github.com/project-codeguard/rules/releases)
+2. **Copy to your project** - Place AI agent and IDE specific skills and rules in your repository
 3. **Start coding** - AI assistants will automatically follow security best practices
 
 - Additional details in the [Get Started →](https://project-codeguard.org/getting-started/)
@@ -53,10 +53,10 @@ Get started in minutes:
 
 ## How It Works
 
-1. **Security rules** are written in unified markdown format (`sources/` directory)
-2. **Conversion tools** translate rules to IDE-specific formats (Cursor, Windsurf, Copilot, Agent Skills, Antigravity)
-3. **Release automation** packages rules into downloadable ZIP files
-4. **AI assistants** reference these rules when generating or reviewing code
+1. **Security skills and rules** are written in unified markdown format (`sources/` directory)
+2. **Conversion tools** translate skills and rules to IDE-specific formats (Cursor, Windsurf, Copilot, Agent Skills, Antigravity)
+3. **Release automation** packages skills and rules into downloadable ZIP files
+4. **AI assistants** reference these skills and rules when generating or reviewing code
 5. **Secure code** is produced automatically without developer intervention
 
 ## Repository Structure
@@ -88,7 +88,7 @@ python src/convert_to_ide_formats.py  # Generate skills/ and dist/
 - **🤝 Contributing**: [Learn how to contribute](https://github.com/project-codeguard/rules/blob/main/CONTRIBUTING.md)
 
 
-## 📄 Licensing
+## Licensing
 
 This project uses dual licensing:
 
@@ -98,4 +98,4 @@ This project uses dual licensing:
 This licensing approach ensures the security rules remain freely accessible and reusable while providing appropriate terms for software components.
 
 
-Copyright © 2025 Cisco Systems, Inc.
+Copyright © 2026 Cisco Systems, Inc.
