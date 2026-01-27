@@ -26,7 +26,8 @@ NEVER deploy MCP servers or clients without implementing proper security control
 - Sanitize file paths through canonicalization
 - Use parameterized queries for database operations
 - Apply context-aware output encoding (SQL, shell, HTML)
-- Treat ALL AI-generated content as untrusted input
+- Sanitize tool outputs: return only minimum fields, redact all PII and sensitive data
+- Treat ALL inputs, tool schemas, metadata, prompts, and resource content as untrusted input
 - Deploy prompt injection detection systems
 - Use strict JSON schemas to maintain boundaries between instructions and data
 
@@ -52,12 +53,19 @@ NEVER deploy MCP servers or clients without implementing proper security control
 #### HTTP Streaming Transport (Remote Servers)
 Required security controls to implement:
 - Payload Limits (prevent large payload and recursive payload DoS)
+- Rate limiting for tool calls and transport requests
 - Client-Server Authentication/Authorization
 - Mutual TLS Authentication
 - TLS Encryption
 - CORS Protection
 - CSRF Protection
 - Integrity Checks (prevent replay, spoofing, poisoned responses)
+
+### Secure Tool and UX Design
+- Create single-purpose tools with explicit boundaries; avoid "do anything" tools
+- Do not rely on the LLM for validation or authorization decisions
+- Use two-stage commit for high-impact actions: draft/preview first, explicit commit with confirmation second
+- Provide rollback/undo paths (draft IDs, snapshots, reversible actions) and time-bound commits when possible
 
 ### Human-in-the-Loop
 - Implement confirmation prompts for risky operations in your MCP server
