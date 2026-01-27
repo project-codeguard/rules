@@ -1,7 +1,7 @@
 ---
 name: software-security
 description: A software security skill that integrates with Project CodeGuard to help AI coding agents write secure code and prevent common vulnerabilities. Use this skill when writing, reviewing, or modifying code to ensure secure-by-default practices are followed.
-codeguard-version: "1.1.0"
+codeguard-version: "1.2.0"
 framework: "Project CodeGuard"
 purpose: "Embed secure-by-default practices into AI coding workflows"
 ---

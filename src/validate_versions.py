@@ -13,6 +13,7 @@ Validates that all version strings match across:
 """
 
 import json
+import re
 import sys
 import tomllib
 from pathlib import Path
@@ -21,6 +22,7 @@ from typing import NamedTuple
 
 class VersionCheck(NamedTuple):
     """Result of a version check."""
+
     file: str
     expected: str
     found: str
@@ -74,6 +76,29 @@ def set_marketplace_version(version: str, root: Path) -> None:
         f.write("\n")
 
 
+def _read_front_matter_value(path: Path, key: str) -> str:
+    """Read a YAML front-matter value from a markdown file."""
+    content = path.read_text(encoding="utf-8")
+    front_matter_match = re.match(r"^---\s*\n(.*?)\n---\s*\n", content, re.DOTALL)
+    if not front_matter_match:
+        raise ValueError(f"Missing front matter in {path}")
+    front_matter = front_matter_match.group(1)
+    value_match = re.search(
+        rf'^{re.escape(key)}:\s*"([^"]+)"\s*$',
+        front_matter,
+        re.MULTILINE,
+    )
+    if not value_match:
+        raise ValueError(f"Missing {key} in front matter for {path}")
+    return value_match.group(1)
+
+
+def get_skill_codeguard_version(root: Path) -> str:
+    """Get codeguard-version from skills/software-security/SKILL.md."""
+    skill_path = root / "skills" / "software-security" / "SKILL.md"
+    return _read_front_matter_value(skill_path, "codeguard-version")
+
+
 def validate_versions(expected_version: str, root: Path = None) -> list[VersionCheck]:
     """
     Validate all versions match the expected version.
@@ -89,15 +114,24 @@ def validate_versions(expected_version: str, root: Path = None) -> list[VersionC
         root = Path(__file__).parent.parent
 
     checks = [
-        VersionCheck("pyproject.toml", expected_version, get_pyproject_version(root), False),
+        VersionCheck(
+            "pyproject.toml", expected_version, get_pyproject_version(root), False
+        ),
         VersionCheck("plugin.json", expected_version, get_plugin_version(root), False),
-        VersionCheck("marketplace.json", expected_version, get_marketplace_version(root), False),
+        VersionCheck(
+            "marketplace.json", expected_version, get_marketplace_version(root), False
+        ),
+        VersionCheck(
+            "SKILL.md",
+            expected_version,
+            get_skill_codeguard_version(root),
+            False,
+        ),
     ]
 
     # Update matches field
     return [
-        VersionCheck(c.file, c.expected, c.found, c.expected == c.found)
-        for c in checks
+        VersionCheck(c.file, c.expected, c.found, c.expected == c.found) for c in checks
     ]
 
 
