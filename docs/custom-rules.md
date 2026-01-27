@@ -5,28 +5,26 @@ Create custom rules to enforce your own policies, compliance requirements, or co
 ## Quick Start
 
 1. **Create a source folder** under `sources/`:
-   ```
-   sources/
-   ├── core/           # Project CodeGuard rules
-   ├── owasp/          # OWASP supplementary rules
-   └── my-rules/       # Your custom rules
-   ```
+
+        sources/
+          core/             # Project CodeGuard rules
+          owasp/            # OWASP supplementary rules
+          my-rules/         # Your custom rules
 
 2. **Copy the template** from `sources/templates/custom-rule-template.md.example` and customize it
 
 3. **Build with your rules**:
-   ```bash
-   uv run python src/convert_to_ide_formats.py --source core my-rules
-   ```
+
+        uv run python src/convert_to_ide_formats.py --source core my-rules
 
 ## Frontmatter Schema
 
 | Field | Required | Description |
-|-------|----------|-------------|
+|:------|:---------|:------------|
 | `description` | Yes | Brief description of the rule |
 | `languages` | If `alwaysApply` is false | List of languages this rule applies to |
 | `alwaysApply` | No | If `true`, rule applies to all files (omit `languages`) |
-| `tags` | No | Categories for filtering: `authentication`, `data-security`, `infrastructure`, `privacy`, `secrets`, `web` |
+| `tags` | No | Filtering categories (see `src/tag_mappings.py`) |
 
 ## CLI Reference
 
