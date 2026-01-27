@@ -10,6 +10,8 @@ languages:
 alwaysApply: false
 ---
 
+rule_id: codeguard-0-mcp-security
+
 # MCP (Model Context Protocol) Security Guidelines
 
 NEVER deploy MCP servers or clients without implementing proper security controls.
