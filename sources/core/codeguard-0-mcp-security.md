@@ -68,7 +68,7 @@ Required security controls to implement:
 
 ### Logging and Observability
 - Implement logging in your MCP servers and clients
-- Log: tools decided to use, parameters, originating prompt
+- Log: tools that were used, parameters, originating prompt
 - Use OpenTelemetry for end-to-end linkability of actions
 - Maintain immutable records of actions and authorizations
 
